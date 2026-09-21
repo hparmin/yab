@@ -1,0 +1,612 @@
+
+/* =========================================
+   Real Estate Panel - Customers
+   RTL / Bootstrap friendly
+   ========================================= */
+
+@font-face {
+    font-family: "Estedad";
+    src: url("../../fonts/Estedad.ttf") format("truetype");
+    font-weight: 100 900;
+}
+* { font-family: "Estedad", sans-serif; }
+:root {
+    --panel-bg: #f5f2ec;
+    --panel-card: #ffffff;
+    --panel-dark: #202c31;
+    --panel-dark-2: #26353b;
+    --panel-primary: #3f806b;
+    --panel-primary-dark: #326a58;
+    --panel-border: #e2ddd3;
+    --panel-text: #202529;
+    --panel-muted: #77746e;
+    --panel-danger: #dc3545;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body.panel-page {
+    margin: 0;
+    background: var(--panel-bg);
+    color: var(--panel-text);
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+.panel-shell {
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.panel-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 250px;
+    z-index: 1040;
+    background: var(--panel-dark);
+    color: #fff;
+    padding: 22px 14px;
+    overflow-y: auto;
+}
+
+.sidebar-brand {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px 20px;
+}
+
+.sidebar-brand-title {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.sidebar-close {
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 17px;
+}
+
+.sidebar-section-title {
+    color: #87969a;
+    font-size: 11px;
+    margin: 4px 10px 10px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: 9px;
+    color: #e7ecec;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .18s ease;
+}
+
+.sidebar-link:hover {
+    color: #fff;
+    background: rgba(255,255,255,.06);
+}
+
+.sidebar-link.active {
+    background: var(--panel-primary);
+    color: #fff;
+}
+
+.sidebar-link i {
+    width: 20px;
+    font-size: 17px;
+    text-align: center;
+}
+
+/* Main */
+.panel-main {
+    min-height: 100vh;
+    margin-right: 250px;
+}
+
+.panel-topbar {
+    height: 58px;
+    background: #1c272b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.topbar-title {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.topbar-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #dce2e2;
+    font-size: 13px;
+}
+
+.topbar-user i {
+    font-size: 18px;
+}
+
+.mobile-menu-btn {
+    display: none;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 23px;
+}
+
+/* Content */
+.panel-content {
+    padding: 28px 30px 45px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.page-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+.page-heading h1 {
+    font-size: 25px;
+    margin: 0 0 7px;
+    font-weight: 800;
+}
+
+.page-heading p {
+    margin: 0;
+    color: var(--panel-muted);
+    font-size: 13px;
+}
+
+.btn-primary-custom {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--panel-primary);
+    color: #fff;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.btn-primary-custom:hover {
+    background: var(--panel-primary-dark);
+    color: #fff;
+}
+
+/* Search */
+.filter-card {
+    background: var(--panel-card);
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    padding: 14px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(30, 35, 35, .025);
+}
+
+.search-wrap {
+    position: relative;
+}
+
+.search-wrap i {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    z-index: 2;
+}
+
+.search-wrap input {
+    height: 45px;
+    border-color: #ded9d0;
+    border-radius: 9px;
+    padding-right: 42px;
+    font-size: 13px;
+    background: #fff;
+}
+
+.search-wrap input:focus {
+    border-color: #80a899;
+    box-shadow: 0 0 0 .2rem rgba(63,128,107,.10);
+}
+
+.customer-filters {
+    display: flex;
+    gap: 7px;
+    margin-top: 11px;
+    flex-wrap: wrap;
+}
+
+.filter-chip {
+    border: 1px solid #ddd8cf;
+    background: #fff;
+    color: #666;
+    border-radius: 30px;
+    padding: 6px 13px;
+    font-size: 12px;
+}
+
+.filter-chip:hover,
+.filter-chip.active {
+    border-color: var(--panel-primary);
+    background: var(--panel-primary);
+    color: #fff;
+}
+
+/* Customer card */
+.customers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.customer-card {
+    background: var(--panel-card);
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 25px;
+    box-shadow: 0 2px 8px rgba(30, 35, 35, .025);
+    transition: .18s ease;
+}
+
+.customer-card:hover {
+    border-color: #d3cdc1;
+    box-shadow: 0 5px 16px rgba(30, 35, 35, .055);
+}
+
+.customer-main {
+    min-width: 0;
+    display: flex;
+    gap: 15px;
+    flex: 1;
+}
+
+.customer-avatar {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e5f0eb;
+    color: var(--panel-primary);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.customer-avatar.avatar-alt {
+    background: #e9edf4;
+    color: #526784;
+}
+
+.customer-avatar.avatar-green {
+    background: #e4eee8;
+    color: #42765f;
+}
+
+.customer-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.customer-title-row {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+}
+
+.customer-title-row h2 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.customer-tags {
+    display: inline-flex;
+    gap: 5px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 4px 9px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.tag-rent {
+    background: #f3ecdf;
+    color: #92734a;
+}
+
+.tag-buy {
+    background: #e5f0eb;
+    color: #39725c;
+}
+
+.tag-mortgage {
+    background: #e9e9f5;
+    color: #5e6092;
+}
+
+.tag-property {
+    background: #e9f0f4;
+    color: #527286;
+}
+
+.customer-contact {
+    display: flex;
+    gap: 17px;
+    flex-wrap: wrap;
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 13px;
+}
+
+.customer-contact span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.customer-contact i {
+    font-size: 12px;
+}
+
+.customer-requirements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.requirement {
+    min-width: 125px;
+    border: 1px solid #eee9e1;
+    background: #faf9f7;
+    border-radius: 8px;
+    padding: 8px 10px;
+}
+
+.requirement-label {
+    display: block;
+    color: #999;
+    font-size: 10px;
+    margin-bottom: 3px;
+}
+
+.requirement strong {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.customer-note {
+    margin-top: 11px;
+    color: #696761;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.customer-note i {
+    color: var(--panel-primary);
+}
+
+.customer-actions {
+    flex: 0 0 175px;
+    border-right: 1px solid #eeeae3;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.matches-box {
+    background: #f3f8f5;
+    border: 1px solid #dcebe4;
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+.matches-box span {
+    display: block;
+    color: #777;
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+.matches-box strong {
+    color: var(--panel-primary-dark);
+    font-size: 13px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.action-buttons .btn {
+    font-size: 11px;
+    border-radius: 7px;
+}
+
+.empty-state {
+    background: #fff;
+    border: 1px dashed #d9d3ca;
+    border-radius: 15px;
+    text-align: center;
+    padding: 45px 20px;
+    color: #777;
+}
+
+.empty-state i {
+    font-size: 35px;
+    color: #aaa;
+}
+
+.empty-state h3 {
+    font-size: 16px;
+    margin: 10px 0 5px;
+}
+
+.empty-state p {
+    font-size: 12px;
+    margin: 0;
+}
+
+/* Overlay */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.42);
+    z-index: 1030;
+}
+
+.sidebar-overlay.show {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+
+    .panel-sidebar {
+        transform: translateX(100%);
+        transition: transform .22s ease;
+    }
+
+    .panel-sidebar.show {
+        transform: translateX(0);
+    }
+
+    .panel-main {
+        margin-right: 0;
+    }
+
+    .mobile-menu-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .topbar-user {
+        display: none;
+    }
+
+    .panel-content {
+        padding: 22px 18px 35px;
+    }
+
+    .customer-card {
+        flex-direction: column;
+    }
+
+    .customer-actions {
+        border-right: 0;
+        border-top: 1px solid #eeeae3;
+        padding-right: 0;
+        padding-top: 15px;
+        flex-basis: auto;
+    }
+
+    .matches-box {
+        max-width: 220px;
+    }
+}
+
+@media (max-width: 575.98px) {
+
+    .panel-topbar {
+        padding: 0 15px;
+    }
+
+    .topbar-title {
+        font-size: 12px;
+    }
+
+    .panel-content {
+        padding: 18px 12px 30px;
+    }
+
+    .page-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .page-heading h1 {
+        font-size: 21px;
+    }
+
+    .btn-primary-custom {
+        align-self: flex-start;
+    }
+
+    .customer-card {
+        padding: 15px;
+        border-radius: 13px;
+    }
+
+    .customer-main {
+        gap: 10px;
+    }
+
+    .customer-avatar {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+        font-size: 15px;
+    }
+
+    .customer-title-row h2 {
+        font-size: 15px;
+    }
+
+    .customer-contact {
+        gap: 8px 14px;
+    }
+
+    .requirement {
+        width: 100%;
+    }
+
+    .customer-actions {
+        width: 100%;
+    }
+}

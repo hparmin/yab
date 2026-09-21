@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>داشبورد</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.icons.css">
+    <link rel="stylesheet" href="assets/css/panel.style.css">
+</head>
+<body>
+<header class="panel-header navbar sticky-top p-0 shadow-sm">
+    <div class="panel-brand d-flex align-items-center px-3">
+        <div>
+            <strong>بنگاه املاک</strong>
+            <small class="d-block">مدیریت مشتری و ملک</small>
+        </div>
+    </div>
+    <div class="panel-topbar flex-grow-1 h-100 d-flex align-items-center justify-content-between px-3 px-md-4">
+        <div class="d-flex align-items-center gap-2">
+            <button class="mobile-menu-btn btn btn-light-panel" type="button" data-panel-sidebar-open
+                    aria-label="باز کردن منو">
+                <i class="bi bi-list fs-5"></i>
+            </button>
+            <span class="page-title">داشبورد</span>
+        </div>
+        <div class="user-menu">
+            <div class="text-end d-none d-sm-block">
+                <div class="fw-bold small">علی رضایی</div>
+                <div class="text-muted" style="font-size:11px">کارشناس املاک</div>
+            </div>
+            <span class="user-avatar">ع</span>
+        </div>
+    </div>
+</header>
+
+<div class="panel-shell">
+    <aside id="panelSidebar" class="panel-sidebar">
+        <div class="offcanvas-header d-md-none p-3 border-bottom">
+            <strong>منوی پنل</strong>
+            <button type="button" class="btn-close" data-panel-sidebar-close></button>
+        </div>
+        <nav class="nav flex-column">
+            <div class="nav-section">مدیریت</div>
+            <li><a class="nav-link active" href="dashboard.html"><i class="bi bi-speedometer2"></i><span>داشبورد</span></a>
+            </li>
+            <li><a class="nav-link " href="properties.html"><i class="bi bi-building"></i><span>ملک‌های من</span></a>
+            </li>
+            <li><a class="nav-link " href="property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a>
+            </li>
+            <li><a class="nav-link " href="customers.html"><i class="bi bi-people"></i><span>مشتری‌ها</span></a></li>
+            <li><a class="nav-link " href="#"><i class="bi bi-person-circle"></i><span>حساب کاربری</span></a></li>
+            <div class="nav-section mt-2">حساب</div>
+            <li><a class="nav-link logout" href="#"><i class="bi bi-box-arrow-right"></i><span>خروج از حساب</span></a>
+            </li>
+        </nav>
+    </aside>
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-md-none"
+         style="display:none;z-index:1010;"></div>
+    <main class="panel-main">
+
+        <div class="page-heading">
+            <div>
+                <h1>داشبورد</h1>
+                <p>خلاصه‌ای از وضعیت املاک و فعالیت‌های شما</p>
+            </div>
+            <a href="property-form.html" class="btn btn-primary px-4">
+                <i class="bi bi-plus-lg ms-1"></i> ثبت ملک جدید
+            </a>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-6 col-xl-3">
+                <div class="card-panel stat-card">
+                    <div class="stat-icon bg-primary-subtle text-primary"><i class="bi bi-buildings"></i></div>
+                    <div class="stat-label">کل املاک من</div>
+                    <div class="stat-value">۱۲۸</div>
+                    <div class="stat-note">۱۲ ملک در این هفته اضافه شده</div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="card-panel stat-card">
+                    <div class="stat-icon bg-success-subtle text-success"><i class="bi bi-house-check"></i></div>
+                    <div class="stat-label">املاک فعال</div>
+                    <div class="stat-value">۹۴</div>
+                    <div class="stat-note">در حال پیگیری</div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="card-panel stat-card">
+                    <div class="stat-icon bg-warning-subtle text-warning"><i class="bi bi-people"></i></div>
+                    <div class="stat-label">مشتری‌های من</div>
+                    <div class="stat-value">۶۷</div>
+                    <div class="stat-note">۵ مشتری جدید این هفته</div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="card-panel stat-card">
+                    <div class="stat-icon bg-danger-subtle text-danger"><i class="bi bi-calendar2-check"></i></div>
+                    <div class="stat-label">پیگیری‌های امروز</div>
+                    <div class="stat-value">۸</div>
+                    <div class="stat-note">۲ مورد نزدیک به موعد</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-lg-8">
+                <div class="card-panel table-panel">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="section-title">آخرین ملک‌های ثبت‌شده</div>
+                            <div class="section-subtitle">آخرین اطلاعاتی که توسط شما ثبت یا ویرایش شده</div>
+                        </div>
+                        <a href="properties.html" class="btn btn-light-panel btn-sm">مشاهده همه</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                            <tr>
+                                <th>ملک</th>
+                                <th>نوع معامله</th>
+                                <th>محدوده</th>
+                                <th>متراژ</th>
+                                <th>قیمت</th>
+                                <th>وضعیت</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><strong>آپارتمان ۱۲۰ متری</strong>
+                                    <div class="text-muted small">کد ملک: ۱۰۲۴</div>
+                                </td>
+                                <td><span class="badge-soft badge-sale">فروش</span></td>
+                                <td>فرهنگ‌شهر</td>
+                                <td>۱۲۰ متر</td>
+                                <td class="price">۶.۸ میلیارد</td>
+                                <td><span class="badge-soft badge-rent">فعال</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>واحد ۹۵ متری</strong>
+                                    <div class="text-muted small">کد ملک: ۱۰۲۳</div>
+                                </td>
+                                <td><span class="badge-soft badge-rent">رهن و اجاره</span></td>
+                                <td>معالی‌آباد</td>
+                                <td>۹۵ متر</td>
+                                <td class="price">۶۰۰ / ۲۲</td>
+                                <td><span class="badge-soft badge-rent">فعال</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>زمین ۳۰۰ متری</strong>
+                                    <div class="text-muted small">کد ملک: ۱۰۲۲</div>
+                                </td>
+                                <td><span class="badge-soft badge-sale">فروش</span></td>
+                                <td>صدرا</td>
+                                <td>۳۰۰ متر</td>
+                                <td class="price">۹.۲ میلیارد</td>
+                                <td><span class="badge-soft badge-muted">در انتظار</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>ویلایی ۲۴۰ متری</strong>
+                                    <div class="text-muted small">کد ملک: ۱۰۲۱</div>
+                                </td>
+                                <td><span class="badge-soft badge-rent">رهن و اجاره</span></td>
+                                <td>قصرالدشت</td>
+                                <td>۲۴۰ متر</td>
+                                <td class="price">۱.۲ میلیارد</td>
+                                <td><span class="badge-soft badge-rent">فعال</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card-panel h-100">
+                    <div class="card-header">
+                        <div class="section-title">دسترسی سریع</div>
+                        <div class="section-subtitle">کارهای پرتکرار را سریع انجام دهید</div>
+                    </div>
+                    <div class="card-body d-grid gap-2">
+                        <a href="property-form.html" class="quick-action">
+                            <i class="bi bi-building-add"></i>
+                            <div><strong>ثبت ملک جدید</strong><small>فروش یا رهن و اجاره</small></div>
+                        </a>
+                        <a href="properties.html" class="quick-action">
+                            <i class="bi bi-search"></i>
+                            <div><strong>جستجوی ملک‌ها</strong><small>فیلتر و مرتب‌سازی اطلاعات</small></div>
+                        </a>
+                        <a href="#" class="quick-action">
+                            <i class="bi bi-person-plus"></i>
+                            <div><strong>ثبت مشتری</strong><small>افزودن مشتری جدید</small></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-panel mt-3">
+            <div class="card-header">
+                <div class="section-title">نکته پیشنهادی برای داشبورد</div>
+                <div class="section-subtitle">این بخش در نسخه بک‌اند می‌تواند بر اساس اطلاعات واقعی کاربر محاسبه شود.
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded-3"><strong>ملک‌های بدون پیگیری</strong>
+                            <div class="text-muted small mt-1">ملک‌هایی که چند روز است به‌روزرسانی نشده‌اند.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded-3"><strong>مشتری‌های منتظر پاسخ</strong>
+                            <div class="text-muted small mt-1">مشتری‌هایی که آخرین تماس آن‌ها نیاز به پیگیری دارد.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded-3"><strong>ملک‌های مناسب مشتری‌ها</strong>
+                            <div class="text-muted small mt-1">در آینده می‌توان تطبیق ملک و نیاز مشتری را به این بخش
+                                اضافه کرد.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+<script src="assets/js/panel.js"></script>
+</body>
+</html>

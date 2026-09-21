@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ثبت ملک</title>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/bootstrap.icons.css">
+<link rel="stylesheet" href="assets/css/panel.style.css">
+</head>
+<body>
+<header class="panel-header navbar sticky-top p-0 shadow-sm">
+  <div class="panel-brand d-flex align-items-center px-3">
+    <div>
+      <strong>بنگاه املاک</strong>
+      <small class="d-block">مدیریت مشتری و ملک</small>
+    </div>
+  </div>
+  <div class="panel-topbar flex-grow-1 h-100 d-flex align-items-center justify-content-between px-3 px-md-4">
+    <div class="d-flex align-items-center gap-2">
+      <button class="mobile-menu-btn btn btn-light-panel" type="button" data-panel-sidebar-open aria-label="باز کردن منو">
+        <i class="bi bi-list fs-5"></i>
+      </button>
+      <span class="page-title">ثبت ملک</span>
+    </div>
+    <div class="user-menu">
+      <div class="text-end d-none d-sm-block">
+        <div class="fw-bold small">علی رضایی</div>
+        <div class="text-muted" style="font-size:11px">کارشناس املاک</div>
+      </div>
+      <span class="user-avatar">ع</span>
+    </div>
+  </div>
+</header>
+
+<div class="panel-shell">
+  <aside id="panelSidebar" class="panel-sidebar">
+    <div class="offcanvas-header d-md-none p-3 border-bottom">
+      <strong>منوی پنل</strong>
+      <button type="button" class="btn-close" data-panel-sidebar-close></button>
+    </div>
+    <nav class="nav flex-column">
+      <div class="nav-section">مدیریت</div>
+      <li><a class="nav-link " href="dashboard.html"><i class="bi bi-speedometer2"></i><span>داشبورد</span></a></li><li><a class="nav-link " href="properties.html"><i class="bi bi-building"></i><span>ملک‌های من</span></a></li><li><a class="nav-link active" href="property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a></li><li><a class="nav-link " href="customers.html"><i class="bi bi-people"></i><span>مشتری‌ها</span></a></li><li><a class="nav-link " href="#"><i class="bi bi-person-circle"></i><span>حساب کاربری</span></a></li>
+      <div class="nav-section mt-2">حساب</div>
+      <li><a class="nav-link logout" href="#"><i class="bi bi-box-arrow-right"></i><span>خروج از حساب</span></a></li>
+    </nav>
+  </aside>
+  <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-md-none" style="display:none;z-index:1010;"></div>
+  <main class="panel-main">
+
+<div class="page-heading">
+  <div>
+    <h1>ثبت ملک</h1>
+    <p>اطلاعات کامل ملک را وارد کنید. این فرم برای فروش و رهن و اجاره مشترک است.</p>
+  </div>
+  <a href="properties.html" class="btn btn-light-panel"><i class="bi bi-arrow-right ms-1"></i> بازگشت به لیست</a>
+</div>
+
+<div class="card-panel">
+  <div class="card-body">
+    <ul class="nav property-type-tabs mb-4" role="tablist">
+      <li class="nav-item"><button type="button" class="nav-link active" data-property-mode="rent">رهن و اجاره</button></li>
+      <li class="nav-item"><button type="button" class="nav-link" data-property-mode="sale">فروش</button></li>
+    </ul>
+    <input type="hidden" id="transaction_type" name="transaction_type" value="rent">
+
+    <form>
+      <div class="form-section light-gray-form-section">
+        <div class="form-section-title"><i class="bi bi-house"></i> اطلاعات اصلی ملک</div>
+        <div class="row g-3">
+          <div class="col-md-4"><label class="form-label required">نوع ملک</label><select class="form-select"><option>آپارتمان</option><option>زمین</option><option>ویلایی</option><option>مغازه</option><option>دفتر کار</option><option>سایر</option></select></div>
+          <div class="col-md-4"><label class="form-label required">مساحت کل (متر)</label><input type="number" class="form-control" placeholder="مثلاً ۱۲۰"></div>
+          <div class="col-md-4"><label class="form-label">زیر بنا (متر)</label><input type="number" class="form-control" placeholder="مثلاً ۱۱۰"></div>
+          <div class="col-md-4"><label class="form-label">تعداد کل طبقات</label><input type="number" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label">تعداد واحد در هر طبقه</label><input type="number" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label">تعداد خواب</label><input type="number" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label">طبقه</label><input type="text" class="form-control" placeholder="مثلاً ۳"></div>
+          <div class="col-md-4"><label class="form-label required">استان</label><select class="form-select"><option>فارس</option><option>تهران</option><option>اصفهان</option><option>خوزستان</option><option>سایر</option></select></div>
+          <div class="col-md-4"><label class="form-label required">شهر</label><input type="text" class="form-control" placeholder="مثلاً شیراز"></div>
+          <div class="col-md-4"><label class="form-label">محدوده</label><input type="text" class="form-control" placeholder="محله / خیابان اصلی"></div>
+          <div class="col-12"><label class="form-label required">نشانی</label><textarea class="form-control" rows="2" placeholder="نشانی کامل ملک"></textarea></div>
+        </div>
+      </div>
+
+      <div class="form-section light-gray-form-section">
+        <div class="form-section-title"><i class="bi bi-person"></i> مشخصات مالک</div>
+        <div class="row g-3">
+          <div class="col-md-6"><label class="form-label required">نام و نام خانوادگی</label><input type="text" class="form-control" placeholder="نام مالک"></div>
+          <div class="col-md-6"><label class="form-label required">موبایل</label><input type="tel" class="form-control" placeholder="۰۹۱۲..."></div>
+        </div>
+      </div>
+
+      <div class="form-section light-gray-form-section">
+        <div class="form-section-title"><i class="bi bi-building"></i> مشخصات ملک</div>
+        <div class="row g-3">
+          <div class="col-md-4"><label class="form-label">وضعیت بنا</label><select class="form-select"><option>نوساز</option><option>کلنگی</option><option>چند سال ساخت</option><option>بازسازی شده</option></select></div>
+          <div class="col-md-4"><label class="form-label">سال ساخت</label><input type="number" class="form-control" placeholder="۱۴۰۴"></div>
+          <div class="col-md-4"><label class="form-label">تعداد کل واحدها</label><input type="number" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label">تعداد واگذاری</label><input type="number" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label">متراژ تجاری</label><input type="number" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label">جهت</label><select class="form-select"><option>شمالی</option><option>جنوبی</option><option>شرقی</option><option>غربی</option><option>دو نبش</option></select></div>
+          <div class="col-md-4"><label class="form-label">نما</label><input type="text" class="form-control" placeholder="سنگ، آجر، مدرن..."></div>
+          <div class="col-md-4"><label class="form-label">کف‌پوش</label><input type="text" class="form-control" placeholder="سرامیک، پارکت..."></div>
+          <div class="col-md-4"><label class="form-label">سرویس آشپزخانه</label><input type="text" class="form-control" placeholder="کابینت، گاز، هود..."></div>
+          <div class="col-md-4"><label class="form-label">ارتفاع سقف</label><input type="text" class="form-control" placeholder="مثلاً ۳ متر"></div>
+          <div class="col-md-4"><label class="form-label">متراژ بر ملک</label><input type="number" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label">متراژ طول ملک</label><input type="number" class="form-control"></div>
+        </div>
+      </div>
+
+      <div class="form-section light-gray-form-section">
+        <div class="form-section-title"><i class="bi bi-stars"></i> امکانات ملک</div>
+        <div class="row g-3">
+          <div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="water"><label class="form-check-label" for="water">آب</label></div></div>
+          <div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="electric"><label class="form-check-label" for="electric">برق</label></div></div>
+          <div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="gas"><label class="form-check-label" for="gas">گاز</label></div></div>
+          <div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="phone"><label class="form-check-label" for="phone">تلفن</label></div></div>
+          <div class="col-6 col-md-2"><div class="form-check"><input class="form-check-input" type="checkbox" id="wall"><label class="form-check-label" for="wall">دیوارکشی</label></div></div>
+        </div>
+      </div>
+
+      <div class="form-section light-gray-form-section">
+        <div class="form-section-title"><i class="bi bi-card-text"></i> توضیحات</div>
+        <div class="row g-3">
+          <div class="col-12"><label class="form-label">مناسب برای</label><textarea class="form-control" placeholder="مثلاً مناسب خانواده، سرمایه‌گذاری، مطب و..."></textarea></div>
+          <div class="col-12"><label class="form-label">توضیحات اضافی</label><textarea class="form-control" placeholder="هر اطلاعات تکمیلی درباره ملک"></textarea></div>
+        </div>
+      </div>
+
+      <div class="form-section light-gray-form-section">
+        <div class="form-section-title"><i class="bi bi-cash-stack"></i> اطلاعات مالی</div>
+        <div data-mode-section="rent" class="row g-3">
+          <div class="col-md-4"><label class="form-label required">مبلغ رهن</label><input type="text" class="form-control" placeholder="مثلاً ۶۰۰ میلیون"></div>
+          <div class="col-md-4"><label class="form-label">مبلغ اجاره</label><input type="text" class="form-control" placeholder="مثلاً ۲۲ میلیون"></div>
+          <div class="col-md-4"><label class="form-label">ارجحیت اجاره</label><select class="form-select"><option>ندارد</option><option>اجاره بیشتر</option><option>رهن بیشتر</option><option>قابل تبدیل</option></select></div>
+        </div>
+        <div data-mode-section="sale" class="row g-3 d-none">
+          <div class="col-md-6"><label class="form-label required">مبلغ فروش</label><input type="text" class="form-control" placeholder="مثلاً ۶.۸ میلیارد تومان"></div>
+          <div class="col-md-6"><label class="form-label">قیمت هر متر</label><input type="text" class="form-control" placeholder="اختیاری"></div>
+        </div>
+      </div>
+
+      <div class="form-section light-gray-form-section">
+        <div class="form-section-title"><i class="bi bi-house-heart"></i> وضعیت سکونت</div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="ownerLiving">
+          <label class="form-check-label" for="ownerLiving">مالک در ملک سکونت دارد.</label>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end gap-2 pt-2">
+        <a href="properties.html" class="btn btn-light-panel px-4">انصراف</a>
+        <button type="submit" class="btn btn-primary px-5"><i class="bi bi-check2 ms-1"></i> ثبت ملک</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+  </main>
+</div>
+<script src="assets/js/panel.js"></script>
+</body>
+</html>
