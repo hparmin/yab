@@ -4,12 +4,6 @@
    RTL / Bootstrap friendly
    ========================================= */
 
-@font-face {
-    font-family: "Estedad";
-    src: url("../../fonts/Estedad.ttf") format("truetype");
-    font-weight: 100 900;
-}
-* { font-family: "Estedad", sans-serif; }
 :root {
     --panel-bg: #f5f2ec;
     --panel-card: #ffffff;
@@ -22,113 +16,19 @@
     --panel-muted: #77746e;
     --panel-danger: #dc3545;
 }
-
-* {
-    box-sizing: border-box;
-}
-
-body.panel-page {
-    margin: 0;
-    background: var(--panel-bg);
-    color: var(--panel-text);
-    font-family: Tahoma, Arial, sans-serif;
-}
-
-.panel-shell {
-    min-height: 100vh;
-}
-
-/* Sidebar */
-.panel-sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 250px;
-    z-index: 1040;
-    background: var(--panel-dark);
-    color: #fff;
-    padding: 22px 14px;
-    overflow-y: auto;
-}
-
-.sidebar-brand {
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 8px 20px;
-}
-
-.sidebar-brand-title {
-    font-size: 15px;
-    font-weight: 700;
-}
-
-.sidebar-close {
-    border: 0;
-    background: transparent;
-    color: #fff;
-    font-size: 17px;
-}
-
-.sidebar-section-title {
-    color: #87969a;
-    font-size: 11px;
-    margin: 4px 10px 10px;
-}
-
-.sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.sidebar-link {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    min-height: 44px;
-    padding: 0 14px;
-    border-radius: 9px;
-    color: #e7ecec;
-    text-decoration: none;
-    font-size: 14px;
-    transition: .18s ease;
-}
-
-.sidebar-link:hover {
-    color: #fff;
-    background: rgba(255,255,255,.06);
-}
-
-.sidebar-link.active {
-    background: var(--panel-primary);
-    color: #fff;
-}
-
-.sidebar-link i {
-    width: 20px;
-    font-size: 17px;
-    text-align: center;
-}
-
 /* Main */
 .panel-main {
     min-height: 100vh;
     margin-right: 250px;
 }
-
 .panel-topbar {
     height: 58px;
     background: #1c272b;
-    color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
 }
-
 .topbar-title {
     font-size: 14px;
     font-weight: 700;

@@ -1,93 +1,72 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>مشتریان | مدیریت فایل املاک</title>
-
+    <title>مشتری ها</title>
+    <link rel="stylesheet" href="assets/css/customers.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap.icons.css">
     <link rel="stylesheet" href="assets/css/panel.style.css">
-    <link rel="stylesheet" href="assets/css/customers.css">
 </head>
-
-<body class="panel-page">
+<body>
+<header class="panel-header navbar sticky-top p-0 shadow-sm">
+    <div class="panel-brand d-flex align-items-center px-3">
+        <div>
+            <strong>بنگاه املاک</strong>
+            <small class="d-block">مدیریت مشتری و ملک</small>
+        </div>
+    </div>
+    <div class="panel-topbar flex-grow-1 h-100 d-flex align-items-center justify-content-between px-3 px-md-4">
+        <div class="d-flex align-items-center gap-2">
+            <button class="mobile-menu-btn btn btn-light-panel" type="button" data-panel-sidebar-open
+                    aria-label="باز کردن منو">
+                <i class="bi bi-list fs-5"></i>
+            </button>
+            <span class="page-title">مشتری ها</span>
+        </div>
+        <div class="user-menu">
+            <div class="text-end d-none d-sm-block">
+                <div class="fw-bold small">نازنین یحیی پور</div>
+                <div class="text-muted" style="font-size:11px">کارشناس املاک</div>
+            </div>
+            <span class="user-avatar">ن</span>
+        </div>
+    </div>
+</header>
 
 <div class="panel-shell">
-    <aside class="panel-sidebar" id="panelSidebar">
-        <div class="sidebar-brand">
-            <div class="sidebar-brand-title">یاب · مدیریت فایل املاک</div>
-            <button type="button"
-                    class="sidebar-close d-lg-none"
-                    data-panel-sidebar-close
-                    aria-label="بستن منو">
-                <i class="bi bi-x-lg"></i>
-            </button>
+    <aside id="panelSidebar" class="panel-sidebar">
+        <div class="offcanvas-header d-md-none p-3 border-bottom">
+            <strong>منوی پنل</strong>
+            <button type="button" class="btn-close" data-panel-sidebar-close></button>
         </div>
-
-        <div class="sidebar-section-title">منوی اصلی</div>
-
-        <nav class="sidebar-nav">
-            <a href="dashboard.html" class="sidebar-link">
-                <i class="bi bi-grid-1x2"></i>
-                <span>داشبورد</span>
-            </a>
-
-            <a href="properties.html" class="sidebar-link">
-                <i class="bi bi-buildings"></i>
-                <span>فایل‌های من</span>
-            </a>
-
-            <a href="property-form.html" class="sidebar-link">
-                <i class="bi bi-plus-square"></i>
-                <span>ثبت فایل جدید</span>
-            </a>
-
-            <a href="#" class="sidebar-link active">
-                <i class="bi bi-people"></i>
-                <span>مشتریان</span>
-            </a>
-
-            <a href="#" class="sidebar-link">
-                <i class="bi bi-person"></i>
-                <span>حساب کاربری</span>
-            </a>
+        <nav class="nav flex-column">
+            <div class="nav-section">مدیریت</div>
+            <li><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i><span>داشبورد</span></a>
+            </li>
+            <li><a class="nav-link" href="properties.html"><i class="bi bi-building"></i><span>ملک‌های من</span></a>
+            </li>
+            <li><a class="nav-link" href="property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a>
+            </li>
+            <li><a class="nav-link active" href="customers.html"><i class="bi bi-people"></i><span>مشتری‌ها</span></a></li>
+            <li><a class="nav-link" href="account.html"><i class="bi bi-person-circle"></i><span>حساب کاربری</span></a></li>
+            <div class="nav-section mt-2">حساب</div>
+            <li><a class="nav-link logout" href="#"><i class="bi bi-box-arrow-right"></i><span>خروج از حساب</span></a>
+            </li>
         </nav>
     </aside>
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-md-none" style="display:none;z-index:1010;"></div>
 
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-    <!-- Main -->
     <main class="panel-main">
-
-        <!-- Topbar -->
-        <header class="panel-topbar">
-            <div class="topbar-title">یاب · مدیریت فایل املاک</div>
-
-            <div class="topbar-user">
-                <span>نازنین یحیی پور · مشاور</span>
-                <i class="bi bi-person-circle"></i>
-            </div>
-
-            <button type="button"
-                    class="mobile-menu-btn"
-                    data-panel-sidebar-open
-                    aria-label="باز کردن منو">
-                <i class="bi bi-list"></i>
-            </button>
-        </header>
-
         <div class="panel-content">
-
-            <!-- Page heading -->
             <div class="page-heading">
                 <div>
                     <h1>مشتریان</h1>
                     <p>مشتریانی که به دنبال خرید، اجاره یا رهن ملک هستند.</p>
                 </div>
 
-                <a href="#" class="btn btn-primary-custom">
+                <a href="#" class="btn btn-primary px-4">
                     <i class="bi bi-plus-lg"></i>
                     مشتری جدید
                 </a>
@@ -373,7 +352,7 @@
         </div>
     </main>
 </div>
-
+<script src="assets/js/panel.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="customers.js"></script>
 

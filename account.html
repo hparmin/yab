@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>حساب کاربری</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.icons.css">
+    <link rel="stylesheet" href="assets/css/panel.style.css">
+</head>
+<body>
+<header class="panel-header navbar sticky-top p-0 shadow-sm">
+    <div class="panel-brand d-flex align-items-center px-3">
+        <div>
+            <strong>بنگاه املاک</strong>
+            <small class="d-block">مدیریت مشتری و ملک</small>
+        </div>
+    </div>
+    <div class="panel-topbar flex-grow-1 h-100 d-flex align-items-center justify-content-between px-3 px-md-4">
+        <div class="d-flex align-items-center gap-2">
+            <button class="mobile-menu-btn btn btn-light-panel" type="button" data-panel-sidebar-open aria-label="باز کردن منو">
+                <i class="bi bi-list fs-5"></i>
+            </button>
+            <span class="page-title">حساب کاربری</span>
+        </div>
+        <div class="user-menu">
+            <div class="text-end d-none d-sm-block">
+                <div class="fw-bold small">نازنین یحیی پور</div>
+                <div class="text-muted" style="font-size:11px">کارشناس املاک</div>
+            </div>
+            <span class="user-avatar">ن</span>
+        </div>
+    </div>
+</header>
+
+<div class="panel-shell">
+    <aside id="panelSidebar" class="panel-sidebar">
+        <div class="offcanvas-header d-md-none p-3 border-bottom">
+            <strong>منوی پنل</strong>
+            <button type="button" class="btn-close" data-panel-sidebar-close></button>
+        </div>
+        <nav class="nav flex-column">
+            <div class="nav-section">مدیریت</div>
+            <li><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i><span>داشبورد</span></a></li>
+            <li><a class="nav-link" href="properties.html"><i class="bi bi-building"></i><span>ملک‌های من</span></a></li>
+            <li><a class="nav-link" href="property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a></li>
+            <li><a class="nav-link" href="customers.html"><i class="bi bi-people"></i><span>مشتری‌ها</span></a></li>
+            <li><a class="nav-link active" href="account.html"><i class="bi bi-person-circle"></i><span>حساب کاربری</span></a></li>
+            <div class="nav-section mt-2">حساب</div>
+            <li><a class="nav-link logout" href="login.html"><i class="bi bi-box-arrow-right"></i><span>خروج از حساب</span></a></li>
+        </nav>
+    </aside>
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-md-none" style="display:none;z-index:1010"></div>
+
+    <main class="panel-main">
+        <div class="row g-3">
+            <!-- کارت پروفایل -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="profile-avatar-lg mx-auto mb-3">ن</div>
+                        <h2 class="h5 fw-bold mb-1">نازنین یحیی‌پور</h2>
+                        <div class="text-muted small mb-2">کارشناس املاک</div>
+                        <span class="badge-soft badge-sale">فعال</span>
+                        <hr class="my-4">
+                        <div class="text-start">
+                            <div class="profile-meta-item">
+                                <i class="bi bi-person"></i>
+                                <div>
+                                    <div class="label">نام کاربری</div>
+                                    <div class="value">nazanin.y</div>
+                                </div>
+                            </div>
+                            <div class="profile-meta-item">
+                                <i class="bi bi-phone"></i>
+                                <div>
+                                    <div class="label">موبایل</div>
+                                    <div class="value">۰۹۱۲ ۱۲۳ ۴۵۶۷</div>
+                                </div>
+                            </div>
+                            <div class="profile-meta-item">
+                                <i class="bi bi-envelope"></i>
+                                <div>
+                                    <div class="label">ایمیل</div>
+                                    <div class="value">nazanin@example.com</div>
+                                </div>
+                            </div>
+                            <div class="profile-meta-item">
+                                <i class="bi bi-calendar3"></i>
+                                <div>
+                                    <div class="label">عضویت از</div>
+                                    <div class="value">۱۴۰۳/۰۲/۱۵</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- فرم ویرایش اطلاعات -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm mb-3">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h3 class="h6 fw-bold mb-0"><i class="bi bi-person-vcard text-primary ms-1"></i> اطلاعات شخصی</h3>
+                        </div>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label required">نام</label>
+                                    <input type="text" class="form-control" value="نازنین">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label required">نام خانوادگی</label>
+                                    <input type="text" class="form-control" value="یحیی‌پور">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label required">نام پدر</label>
+                                    <input type="text" class="form-control" value="محمود">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label required">کد ملی</label>
+                                    <input type="text" class="form-control" value="۰۰۱۲۳۴۵۶۷۸" maxlength="10">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label required">تاریخ تولد</label>
+                                    <input type="text" class="form-control" value="۱۳۷۰/۰۵/۱۲">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label required">جنسیت</label>
+                                    <select class="form-select">
+                                        <option selected>زن</option>
+                                        <option>مرد</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label required">شماره موبایل</label>
+                                    <input type="tel" class="form-control" value="09121234567">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">تلفن ثابت</label>
+                                    <input type="tel" class="form-control" value="07136251234">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">ایمیل</label>
+                                    <input type="email" class="form-control" value="nazanin@example.com">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label required">کد پستی</label>
+                                    <input type="text" class="form-control" value="7187654321">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label required">استان</label>
+                                    <input type="text" class="form-control" value="فارس">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label required">شهر</label>
+                                    <input type="text" class="form-control" value="شیراز">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">محله</label>
+                                    <input type="text" class="form-control" value="معالی‌آباد">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label required">آدرس کامل</label>
+                                    <textarea class="form-control" rows="2">شیراز، معالی‌آباد، خیابان فلان، پلاک ۱۲</textarea>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end gap-2 mt-4">
+                                <button type="reset" class="btn btn-light-panel px-4">بازنشانی</button>
+                                <button type="submit" class="btn btn-primary px-4">
+                                    <i class="bi bi-check2 ms-1"></i> ذخیره تغییرات
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- تغییر رمز -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="h6 fw-bold mb-3"><i class="bi bi-shield-lock text-primary ms-1"></i> تغییر رمز عبور</h3>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label required">رمز فعلی</label>
+                                    <input type="password" class="form-control" autocomplete="current-password">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label required">رمز جدید</label>
+                                    <input type="password" class="form-control" autocomplete="new-password">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label required">تکرار رمز جدید</label>
+                                    <input type="password" class="form-control" autocomplete="new-password">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mt-4">
+                                <button type="submit" class="btn btn-primary px-4">
+                                    <i class="bi bi-key ms-1"></i> به‌روزرسانی رمز
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="assets/js/panel.js"></script>
+</body>
+</html>
