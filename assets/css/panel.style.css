@@ -337,6 +337,33 @@ textarea.form-control { min-height: 105px; resize: vertical; }
 .light-gray-form-section{
     background-color: #fafafa;
 }
+
+/* نقشه انتخاب موقعیت ملک */
+.property-map {
+    width: 100%;
+    height: 380px;
+    border-radius: 12px;
+    border: 1px solid var(--panel-border);
+    overflow: hidden;
+    z-index: 1;
+    background: #e8eef5;
+}
+.map-toolbar .btn {
+    font-size: 13px;
+}
+#coordsDisplay {
+    font-family: ui-monospace, monospace;
+    direction: ltr;
+    unicode-bidi: embed;
+}
+/* اصلاح جهت کنترل‌های Leaflet در صفحه RTL */
+.leaflet-control-zoom {
+    margin-left: 10px !important;
+    margin-right: 0 !important;
+}
+.leaflet-control-attribution {
+    font-size: 10px;
+}
 /* ========== Auth pages (login / register) ========== */
 .auth-page {
     min-height: 100vh;

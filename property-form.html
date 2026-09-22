@@ -6,6 +6,7 @@
 <title>ثبت ملک</title>
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/bootstrap.icons.css">
+<link rel="stylesheet" href="assets/css/leaflet.css">
 <link rel="stylesheet" href="assets/css/panel.style.css">
 </head>
 <body>
@@ -76,10 +77,40 @@
           <div class="col-md-4"><label class="form-label">تعداد واحد در هر طبقه</label><input type="number" class="form-control"></div>
           <div class="col-md-4"><label class="form-label">تعداد خواب</label><input type="number" class="form-control"></div>
           <div class="col-md-4"><label class="form-label">طبقه</label><input type="text" class="form-control" placeholder="مثلاً ۳"></div>
-          <div class="col-md-4"><label class="form-label required">استان</label><select class="form-select"><option>فارس</option><option>تهران</option><option>اصفهان</option><option>خوزستان</option><option>سایر</option></select></div>
-          <div class="col-md-4"><label class="form-label required">شهر</label><input type="text" class="form-control" placeholder="مثلاً شیراز"></div>
+          <div class="col-md-4"><label class="form-label required">استان</label><select class="form-select" id="provinceSelect"><option>فارس</option><option>تهران</option><option>اصفهان</option><option>خوزستان</option><option>سایر</option></select></div>
+          <div class="col-md-4"><label class="form-label required">شهر</label><input type="text" class="form-control" id="cityInput" placeholder="مثلاً شیراز"></div>
           <div class="col-md-4"><label class="form-label">محدوده</label><input type="text" class="form-control" placeholder="محله / خیابان اصلی"></div>
           <div class="col-12"><label class="form-label required">نشانی</label><textarea class="form-control" rows="2" placeholder="نشانی کامل ملک"></textarea></div>
+        </div>
+      </div>
+
+      <div class="form-section light-gray-form-section">
+        <div class="form-section-title"><i class="bi bi-geo-alt-fill"></i> موقعیت دقیق روی نقشه</div>
+        <p class="text-muted small mb-3">روی نقشه کلیک کنید یا مارکر را جابه‌جا کنید تا مختصات دقیق ملک ثبت شود. می‌توانید از موقعیت فعلی دستگاه هم استفاده کنید. اگر نقشه خالی بود، از کنترل لایه‌ها (بالا-چپ) لایهٔ دیگری را امتحان کنید. ترجیحاً صفحه را با سرور محلی (نه file://) باز کنید.</p>
+        <div class="map-toolbar d-flex flex-wrap gap-2 mb-3">
+          <button type="button" class="btn btn-light-panel btn-sm" id="btnLocateMe">
+            <i class="bi bi-crosshair me-1"></i> موقعیت فعلی من
+          </button>
+          <button type="button" class="btn btn-light-panel btn-sm" id="btnResetMap">
+            <i class="bi bi-arrow-counterclockwise me-1"></i> بازنشانی نقشه
+          </button>
+          <div class="ms-auto d-flex align-items-center gap-2 flex-wrap">
+            <span class="small text-muted">مختصات انتخاب‌شده:</span>
+            <span class="badge-soft badge-muted" id="coordsDisplay">انتخاب نشده</span>
+          </div>
+        </div>
+        <div id="propertyMap" class="property-map" aria-label="نقشه انتخاب موقعیت ملک"></div>
+        <input type="hidden" id="property_lat" name="latitude" value="">
+        <input type="hidden" id="property_lng" name="longitude" value="">
+        <div class="row g-3 mt-2">
+          <div class="col-md-6">
+            <label class="form-label">عرض جغرافیایی (Latitude)</label>
+            <input type="text" class="form-control" id="latInput" placeholder="مثلاً ۲۹.۵۹۱۸" readonly>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">طول جغرافیایی (Longitude)</label>
+            <input type="text" class="form-control" id="lngInput" placeholder="مثلاً ۵۲.۵۸۳۷" readonly>
+          </div>
         </div>
       </div>
 
@@ -160,5 +191,142 @@
   </main>
 </div>
 <script src="assets/js/panel.js"></script>
+<script src="assets/js/leaflet.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // --- نقشه انتخاب موقعیت ملک (Leaflet + OpenStreetMap) ---
+  // مرکز پیش‌فرض: شیراز (چون در فرم استان فارس و شهر شیراز نمونه است)
+  var defaultCenter = [29.5918, 52.5837];
+  var defaultZoom = 13;
+
+  // مسیر آیکون‌های مارکر (نسبت به فایل CSS/Leaflet)
+  L.Icon.Default.mergeOptions({
+    iconUrl: "assets/css/images/marker-icon.png",
+    iconRetinaUrl: "assets/css/images/marker-icon-2x.png",
+    shadowUrl: "assets/css/images/marker-shadow.png"
+  });
+
+  var map = L.map("propertyMap", {
+    center: defaultCenter,
+    zoom: defaultZoom,
+    zoomControl: true,
+    attributionControl: true
+  });
+
+  // لایه نقشه رایگان و پایدار (Carto) — بدون API Key
+  // سرورهای رسمی OSM اغلب به خاطر سیاست Referer و محدودیت شبکه در ایران 403 می‌دهند
+  var cartoLayer = L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+    maxZoom: 20,
+    subdomains: "abcd",
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+  });
+
+  // پشتیبان: Esri World Street Map
+  var esriLayer = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", {
+    maxZoom: 19,
+    attribution: "Tiles &copy; Esri"
+  });
+
+  // لایه پیش‌فرض
+  cartoLayer.addTo(map);
+
+  // کنترل تعویض لایه (اگر یکی کار نکرد، دیگری را انتخاب کنید)
+  L.control.layers(
+    {
+      "نقشه خیابانی (Carto)": cartoLayer,
+      "نقشه خیابانی (Esri)": esriLayer
+    },
+    null,
+    { position: "topleft", collapsed: true }
+  ).addTo(map);
+
+  var marker = null;
+  var latInput = document.getElementById("latInput");
+  var lngInput = document.getElementById("lngInput");
+  var latHidden = document.getElementById("property_lat");
+  var lngHidden = document.getElementById("property_lng");
+  var coordsDisplay = document.getElementById("coordsDisplay");
+
+  function setLocation(lat, lng, panTo) {
+    lat = Number(lat);
+    lng = Number(lng);
+    if (isNaN(lat) || isNaN(lng)) return;
+
+    if (marker) {
+      marker.setLatLng([lat, lng]);
+    } else {
+      marker = L.marker([lat, lng], { draggable: true }).addTo(map);
+      marker.on("dragend", function (e) {
+        var pos = e.target.getLatLng();
+        setLocation(pos.lat, pos.lng, false);
+      });
+    }
+
+    if (panTo) {
+      map.setView([lat, lng], Math.max(map.getZoom(), 15));
+    }
+
+    var latStr = lat.toFixed(6);
+    var lngStr = lng.toFixed(6);
+    latInput.value = latStr;
+    lngInput.value = lngStr;
+    latHidden.value = latStr;
+    lngHidden.value = lngStr;
+    coordsDisplay.textContent = latStr + " ، " + lngStr;
+    coordsDisplay.classList.remove("badge-muted");
+    coordsDisplay.classList.add("badge-rent");
+  }
+
+  // کلیک روی نقشه → قرار دادن / جابه‌جایی مارکر
+  map.on("click", function (e) {
+    setLocation(e.latlng.lat, e.latlng.lng, false);
+  });
+
+  // دکمه موقعیت فعلی
+  document.getElementById("btnLocateMe").addEventListener("click", function () {
+    if (!navigator.geolocation) {
+      alert("مرورگر شما از موقعیت‌یابی پشتیبانی نمی‌کند.");
+      return;
+    }
+    var btn = this;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> در حال دریافت...';
+    navigator.geolocation.getCurrentPosition(
+      function (pos) {
+        setLocation(pos.coords.latitude, pos.coords.longitude, true);
+        btn.disabled = false;
+        btn.innerHTML = '<i class="bi bi-crosshair me-1"></i> موقعیت فعلی من';
+      },
+      function () {
+        alert("دسترسی به موقعیت مکانی ممکن نشد. لطفاً مجوز مکان را بررسی کنید.");
+        btn.disabled = false;
+        btn.innerHTML = '<i class="bi bi-crosshair me-1"></i> موقعیت فعلی من';
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  });
+
+  // بازنشانی نقشه به مرکز پیش‌فرض
+  document.getElementById("btnResetMap").addEventListener("click", function () {
+    if (marker) {
+      map.removeLayer(marker);
+      marker = null;
+    }
+    map.setView(defaultCenter, defaultZoom);
+    latInput.value = "";
+    lngInput.value = "";
+    latHidden.value = "";
+    lngHidden.value = "";
+    coordsDisplay.textContent = "انتخاب نشده";
+    coordsDisplay.classList.remove("badge-rent");
+    coordsDisplay.classList.add("badge-muted");
+  });
+
+  // وقتی اندازه نقشه در تب/صفحه تغییر می‌کند، Leaflet باید invalidate شود
+  setTimeout(function () {
+    map.invalidateSize();
+  }, 200);
+});
+</script>
 </body>
 </html>
