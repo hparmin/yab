@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ثبت ملک</title>
+<title>ثبت ملک فروش</title>
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/bootstrap.icons.css">
 <link rel="stylesheet" href="assets/css/leaflet.css">
-<link rel="stylesheet" href="assets/css/panel.style.css"><script data-theme-preload>
+<link rel="stylesheet" href="assets/css/panel.style.css"><script data-theme-preload>(function(){try{if(localStorage.getItem("panel-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}})();</script><script data-theme-preload>
           (function(){try{
             var t=localStorage.getItem("panel-theme");
             if(t==="dark") document.documentElement.setAttribute("data-theme","dark");
@@ -62,6 +62,7 @@
 
 <div class="panel-shell">
   
+
 <aside id="panelSidebar" class="panel-sidebar">
   <div class="offcanvas-header d-md-none p-3 border-bottom">
     <strong>منوی پنل</strong>
@@ -75,34 +76,34 @@
     </a>
 
     <div class="sidebar-group">
-      <button class="nav-link sidebar-group-toggle" type="button"
+      <button class="nav-link sidebar-group-toggle active" type="button"
               data-bs-toggle="collapse" data-bs-target="#saleSubmenu"
-              aria-expanded="false">
+              aria-expanded="true">
         <i class="bi bi-tag"></i><span>فروش</span>
         <i class="bi bi-chevron-down sidebar-chevron"></i>
       </button>
-      <div id="saleSubmenu" class="collapse sidebar-submenu">
+      <div id="saleSubmenu" class="collapse sidebar-submenu show">
         <a class="nav-link sub-link" href="sale-properties.html">
           <i class="bi bi-buildings"></i><span>ملک‌های من</span>
         </a>
-        <a class="nav-link sub-link" href="sale-property-form.html">
+        <a class="nav-link sub-link active" href="sale-property-form.html">
           <i class="bi bi-plus-square"></i><span>ثبت ملک</span>
         </a>
       </div>
     </div>
 
     <div class="sidebar-group">
-      <button class="nav-link sidebar-group-toggle active" type="button"
+      <button class="nav-link sidebar-group-toggle" type="button"
               data-bs-toggle="collapse" data-bs-target="#rentSubmenu"
-              aria-expanded="true">
+              aria-expanded="false">
         <i class="bi bi-house-door"></i><span>رهن و اجاره</span>
         <i class="bi bi-chevron-down sidebar-chevron"></i>
       </button>
-      <div id="rentSubmenu" class="collapse sidebar-submenu show">
+      <div id="rentSubmenu" class="collapse sidebar-submenu">
         <a class="nav-link sub-link" href="rent-properties.html">
           <i class="bi bi-buildings"></i><span>ملک‌های من</span>
         </a>
-        <a class="nav-link sub-link active" href="rent-property-form.html">
+        <a class="nav-link sub-link" href="rent-property-form.html">
           <i class="bi bi-plus-square"></i><span>ثبت ملک</span>
         </a>
       </div>
@@ -129,19 +130,15 @@
 
 <div class="page-heading">
   <div>
-    <h1>ثبت ملک</h1>
-    <p>اطلاعات کامل ملک را وارد کنید. این فرم برای فروش و رهن و اجاره مشترک است.</p>
+    <h1>ثبت ملک فروش</h1>
+    <p>اطلاعات ملک فروش را وارد کنید. اطلاعات مالی این فرم مخصوص فروش است.</p>
   </div>
-  <a href="rent-properties.html" class="btn btn-light-panel"><i class="bi bi-arrow-right ms-1"></i> بازگشت به لیست</a>
+  <a href="sale-properties.html" class="btn btn-light-panel"><i class="bi bi-arrow-right ms-1"></i> بازگشت به لیست</a>
 </div>
 
 <div class="card-panel">
   <div class="card-body">
-    <ul class="nav property-type-tabs mb-4" role="tablist">
-      <li class="nav-item"><button type="button" class="nav-link active" data-property-mode="rent">رهن و اجاره</button></li>
-      <li class="nav-item"><button type="button" class="nav-link" data-property-mode="sale">فروش</button></li>
-    </ul>
-    <input type="hidden" id="transaction_type" name="transaction_type" value="rent">
+    
 
     <form>
       <div class="form-section light-gray-form-section">
@@ -250,15 +247,10 @@
       </div>
 
       <div class="form-section light-gray-form-section">
-        <div class="form-section-title"><i class="bi bi-cash-stack"></i> اطلاعات مالی</div>
-        <div data-mode-section="rent" class="row g-3">
-          <div class="col-md-4"><label class="form-label required">مبلغ رهن</label><input type="text" class="form-control" placeholder="مثلاً ۶۰۰ میلیون"></div>
-          <div class="col-md-4"><label class="form-label">مبلغ اجاره</label><input type="text" class="form-control" placeholder="مثلاً ۲۲ میلیون"></div>
-          <div class="col-md-4"><label class="form-label">ارجحیت اجاره</label><select class="form-select"><option>ندارد</option><option>اجاره بیشتر</option><option>رهن بیشتر</option><option>قابل تبدیل</option></select></div>
-        </div>
-        <div data-mode-section="sale" class="row g-3 d-none">
+        <div class="form-section-title"><i class="bi bi-cash-stack"></i> اطلاعات مالی فروش</div>
+        <div class="row g-3">
           <div class="col-md-6"><label class="form-label required">مبلغ فروش</label><input type="text" class="form-control" placeholder="مثلاً ۶.۸ میلیارد تومان"></div>
-          <div class="col-md-6"><label class="form-label">قیمت هر متر</label><input type="text" class="form-control" placeholder="اختیاری"></div>
+          <div class="col-md-6"><label class="form-label">قیمت هر متر</label><input type="text" class="form-control" placeholder="مثلاً ۵۵ میلیون تومان"></div>
         </div>
       </div>
 

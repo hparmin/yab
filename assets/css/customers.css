@@ -1,26 +1,9 @@
-
-/* =========================================
-   Real Estate Panel - Customers
-   RTL / Bootstrap friendly
-   ========================================= */
-
-:root {
-    --panel-bg: #f6f7fb;
-    --panel-card: #ffffff;
-    --panel-dark: #202c31;
-    --panel-dark-2: #26353b;
-    --panel-primary: #3f806b;
-    --panel-primary-dark: #326a58;
-    --panel-border: #e2ddd3;
-    --panel-text: #202529;
-    --panel-muted: #77746e;
-    --panel-danger: #dc3545;
-}
 /* Main */
 .panel-main {
     min-height: 100vh;
     margin-right: 250px;
 }
+
 .topbar-title {
     font-size: 14px;
     font-weight: 700;
@@ -126,7 +109,7 @@
 
 .search-wrap input:focus {
     border-color: #80a899;
-    box-shadow: 0 0 0 .2rem rgba(63,128,107,.10);
+    box-shadow: 0 0 0 .2rem rgba(63, 128, 107, .10);
 }
 
 .customer-filters {
@@ -225,6 +208,7 @@
     margin: 0;
     font-size: 17px;
     font-weight: 800;
+    color: var(--panel-text);
 }
 
 .customer-tags {
@@ -388,7 +372,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.42);
+    background: rgba(0, 0, 0, .42);
     z-index: 1030;
 }
 
@@ -500,5 +484,120 @@
 
     .customer-actions {
         width: 100%;
+    }
+}
+
+/* ========== Dark theme for customers page ========== */
+html[data-theme="dark"] .customer-card {
+    background: var(--panel-card);
+    border-color: var(--panel-border);
+    color: var(--panel-text);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+html[data-theme="dark"] .customer-card:hover {
+    border-color: #4b5568;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.35);
+}
+html[data-theme="dark"] .customer-title-row h2 {
+    color: var(--panel-text);
+}
+html[data-theme="dark"] .customer-contact {
+    color: var(--panel-muted);
+}
+html[data-theme="dark"] .customer-note {
+    color: #a8b0c0;
+}
+html[data-theme="dark"] .requirement {
+    background: #1b2638;
+    border-color: #303b4d;
+}
+html[data-theme="dark"] .requirement-label {
+    color: #8b95a8;
+}
+html[data-theme="dark"] .requirement strong {
+    color: var(--panel-text);
+}
+html[data-theme="dark"] .customer-actions {
+    border-right-color: #303b4d;
+}
+html[data-theme="dark"] .matches-box {
+    background: #1b2638;
+    border-color: #303b4d;
+}
+html[data-theme="dark"] .matches-box span {
+    color: var(--panel-muted);
+}
+html[data-theme="dark"] .matches-box strong {
+    color: #93b4ff;
+}
+html[data-theme="dark"] .customer-avatar {
+    background: #1e3a8a;
+    color: #bfdbfe;
+}
+html[data-theme="dark"] .customer-avatar.avatar-alt {
+    background: #1e3a5f;
+    color: #93b4ff;
+}
+html[data-theme="dark"] .customer-avatar.avatar-green {
+    background: #14532d;
+    color: #86efac;
+}
+html[data-theme="dark"] .tag-rent {
+    background: #3f2e1e;
+    color: #f0d5a8;
+}
+html[data-theme="dark"] .tag-buy {
+    background: #14532d;
+    color: #86efac;
+}
+html[data-theme="dark"] .tag-mortgage {
+    background: #2e2a4a;
+    color: #c4b5fd;
+}
+html[data-theme="dark"] .tag-property {
+    background: #1e3a5f;
+    color: #93c5fd;
+}
+html[data-theme="dark"] .filter-chip {
+    background: #202b3e;
+    border-color: #3d4a5e;
+    color: #cbd5e1;
+}
+html[data-theme="dark"] .filter-chip:hover,
+html[data-theme="dark"] .filter-chip.active {
+    background: var(--panel-primary);
+    border-color: var(--panel-primary);
+    color: #fff;
+}
+html[data-theme="dark"] .search-wrap input {
+    background: #202b3e;
+    border-color: #3d4a5e;
+    color: var(--panel-text);
+}
+html[data-theme="dark"] .search-wrap i {
+    color: #8b95a8;
+}
+html[data-theme="dark"] .filter-card {
+    background: var(--panel-card);
+    border-color: var(--panel-border);
+}
+html[data-theme="dark"] .empty-state,
+html[data-theme="dark"] #customerEmpty {
+    background: var(--panel-card);
+    border-color: var(--panel-border);
+    color: var(--panel-muted);
+}
+html[data-theme="dark"] .empty-state i {
+    color: #6b7280;
+}
+html[data-theme="dark"] .page-heading h1 {
+    color: var(--panel-text);
+}
+html[data-theme="dark"] .page-heading p {
+    color: var(--panel-muted);
+}
+@media (max-width: 991.98px) {
+    html[data-theme="dark"] .customer-actions {
+        border-top-color: #303b4d;
     }
 }

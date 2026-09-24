@@ -30,6 +30,35 @@ document.addEventListener("DOMContentLoaded", function () {
     overlay?.addEventListener("click", closeSidebar);
 
 
+
+    // Persistent light / dark theme
+    const themeToggles = document.querySelectorAll("[data-theme-toggle]");
+    function applyTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("panel-theme", theme);
+        themeToggles.forEach(themeToggle => {
+            themeToggle.innerHTML = theme === "dark"
+                ? '<i class="bi bi-sun"></i>'
+                : '<i class="bi bi-moon-stars"></i>';
+            themeToggle.setAttribute("aria-label", theme === "dark" ? "فعال کردن تم روشن" : "فعال کردن تم تیره");
+            themeToggle.title = theme === "dark" ? "تم روشن" : "تم تیره";
+        });
+    }
+    const savedTheme = localStorage.getItem("panel-theme") || "light";
+    applyTheme(savedTheme);
+    themeToggles.forEach(btn => {
+        btn.addEventListener("click", () => {
+            applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+        });
+    });
+
+    // Close the mobile sidebar after navigating.
+    document.querySelectorAll("#panelSidebar a.nav-link").forEach(link => {
+        link.addEventListener("click", () => {
+            if (window.innerWidth < 768) closeSidebar();
+        });
+    });
+
     // Sale / rent form switch
     document.querySelectorAll("[data-property-mode]").forEach(btn => {
         btn.addEventListener("click", function () {

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
  const rows=[...document.querySelectorAll(".property-row")], q=document.getElementById("propertySearch");
  const get=id=>document.getElementById(id), empty=get("propertyEmpty"), meta=get("propertyResultsMeta"), summary=get("propertyActiveFilters");
- let quick="all";
+ let quick="all"; const fixedDeal=document.body.dataset.fixedDeal||"";
  const norm=v=>(v||"").toString().trim().toLowerCase().replace(/[يى]/g,"ی").replace(/ك/g,"ک");
  function filters(){
   return {
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const f=filters(), query=norm(q.value); let count=0;
   rows.forEach(r=>{
    const hay=norm([r.dataset.code,r.dataset.type,r.dataset.deal==="sale"?"فروش":"رهن و اجاره",r.dataset.city,r.dataset.province,r.dataset.district,r.dataset.owner,r.innerText].join(" "));
-   let ok=!query||hay.includes(query);
+   let ok=(!query||hay.includes(query)) && (!fixedDeal || r.dataset.deal===fixedDeal);
    if(f.type)ok&&=r.dataset.type===f.type;if(f.deal)ok&&=r.dataset.deal===f.deal;if(f.province)ok&&=r.dataset.province===f.province;
    if(f.city)ok&&=norm(r.dataset.city).includes(norm(f.city));if(f.district)ok&&=norm(r.dataset.district).includes(norm(f.district));if(f.owner)ok&&=norm(r.dataset.owner).includes(norm(f.owner));
    const area=+r.dataset.area, year=+r.dataset.year, room=+r.dataset.rooms;
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
    if(quick==="sale")ok&&=r.dataset.deal==="sale";if(quick==="rent")ok&&=r.dataset.deal==="rent";if(quick==="apartment")ok&&=r.dataset.type==="آپارتمان";if(quick==="villa")ok&&=r.dataset.type==="ویلایی";if(quick==="land")ok&&=r.dataset.type==="زمین";
    r.classList.toggle("d-none",!ok);if(ok)count++;
   });
-  const labels=activeLabels(f); summary.innerHTML=labels.length?labels.map(x=>`<span class="active-filter">${x}</span>`).join(""):`<span class="active-filter">بدون فیلتر</span>`;
+  const labels=activeLabels(f); if(fixedDeal) labels.unshift(fixedDeal==="sale"?"فروش":"رهن و اجاره"); summary.innerHTML=labels.length?labels.map(x=>`<span class="active-filter">${x}</span>`).join(""):`<span class="active-filter">بدون فیلتر</span>`;
   meta.textContent=`${count} فایل از ${rows.length} فایل نمونه نمایش داده می‌شود`;
   empty.classList.toggle("d-none",count!==0);
  }
