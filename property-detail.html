@@ -10,27 +10,44 @@
 </head>
 <body>
 <header class="panel-header navbar sticky-top p-0 shadow-sm">
-    <div class="panel-brand d-flex align-items-center px-3">
-        <div>
-            <strong>بنگاه املاک</strong>
-            <small class="d-block">مدیریت مشتری و ملک</small>
-        </div>
+  <div class="panel-brand d-flex align-items-center px-3">
+    <div><strong>بنگاه املاک</strong><small class="d-block">مدیریت مشتری و ملک</small></div>
+  </div>
+  <div class="panel-topbar flex-grow-1 h-100 d-flex align-items-center justify-content-between px-3 px-md-4">
+    <div class="d-flex align-items-center gap-2">
+      <button class="mobile-menu-btn btn btn-light-panel" type="button" data-panel-sidebar-open aria-label="باز کردن منو"><i class="bi bi-list fs-5"></i></button>
+      <span class="page-title">جزئیات ملک</span>
     </div>
-    <div class="panel-topbar flex-grow-1 h-100 d-flex align-items-center justify-content-between px-3 px-md-4">
-        <div class="d-flex align-items-center gap-2">
-            <button class="mobile-menu-btn btn btn-light-panel" type="button" data-panel-sidebar-open aria-label="باز کردن منو">
-                <i class="bi bi-list fs-5"></i>
-            </button>
-            <span class="page-title">جزئیات ملک</span>
+    <div class="d-flex align-items-center gap-2">
+      <div class="dropdown notification-wrap">
+        <button class="notification-btn" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-label="اعلان‌ها">
+          <i class="bi bi-bell"></i><span class="notification-count">۳</span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-start notification-menu">
+          <div class="dropdown-header d-flex justify-content-between align-items-center">
+            <strong class="small">اعلان‌ها</strong><span class="badge bg-primary-subtle text-primary">۳ جدید</span>
+          </div>
+          <a class="notification-item" href="#">
+            <span class="notification-icon"><i class="bi bi-person-check"></i></span>
+            <span><strong>یک مشتری جدید ثبت شد</strong><small>مشتری «امیرحسین تقوی» به فهرست مشتری‌ها اضافه شده است.</small></span>
+          </a>
+          <a class="notification-item" href="properties.html">
+            <span class="notification-icon"><i class="bi bi-building-check"></i></span>
+            <span><strong>فایل جدید برای پیگیری</strong><small>یک ملک جدید در محدوده فرهنگ‌شهر ثبت شده است.</small></span>
+          </a>
+          <a class="notification-item" href="#">
+            <span class="notification-icon"><i class="bi bi-calendar-event"></i></span>
+            <span><strong>یادآوری پیگیری</strong><small>۲ پیگیری برای امروز باقی مانده است.</small></span>
+          </a>
+          <div class="p-2 text-center border-top"><a class="small fw-bold" href="#">مشاهده همه اعلان‌ها</a></div>
         </div>
-        <div class="user-menu">
-            <div class="text-end d-none d-sm-block">
-                <div class="fw-bold small">نازنین یحیی پور</div>
-                <div class="text-muted" style="font-size:11px">کارشناس املاک</div>
-            </div>
-            <span class="user-avatar">ن</span>
-        </div>
+      </div>
+      <div class="user-menu">
+        <div class="text-end d-none d-sm-block"><div class="fw-bold small">نازنین یحیی پور</div><div class="text-muted" style="font-size:11px">کارشناس املاک</div></div>
+        <span class="user-avatar">ن</span>
+      </div>
     </div>
+  </div>
 </header>
 
 <div class="panel-shell">
@@ -252,6 +269,6 @@
         </div>
     </main>
 </div>
-<script src="assets/js/panel.js"></script>
+<script src="assets/js/bootstrap.bundle.js"></script><script src="assets/js/panel.js"></script>
 </body>
 </html>

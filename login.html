@@ -17,6 +17,7 @@
             <p>بنگاه املاک — مدیریت مشتری و ملک</p>
         </div>
         <div class="auth-card-body">
+            <div id="pendingNotice" class="d-none p-3 rounded-3 border mb-3" style="background:#fffaf0;border-color:#f3dfb0!important"><div class="d-flex gap-2"><i class="bi bi-hourglass-split text-warning"></i><div><strong class="d-block small mb-1">حساب در انتظار تأیید مدیر است</strong><span class="small text-muted">تا زمانی که مدیر حساب شما را تأیید نکند، امکان ورود به پنل وجود ندارد.</span></div></div></div>
             <form action="dashboard.html" method="get" novalidate>
                 <div class="mb-3">
                     <label class="form-label required" for="login_username">نام کاربری</label>
@@ -62,6 +63,7 @@ document.querySelectorAll("[data-toggle-password]").forEach(btn => {
         btn.querySelector("i").className = isPass ? "bi bi-eye-slash" : "bi bi-eye";
     });
 });
+const params=new URLSearchParams(location.search); if(params.get("status")==="pending") document.getElementById("pendingNotice")?.classList.remove("d-none");
 </script>
 </body>
 </html>

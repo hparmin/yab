@@ -3,34 +3,57 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>مشتری ها</title>
-    <link rel="stylesheet" href="assets/css/customers.css">
+    <title>داشبورد</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap.icons.css">
     <link rel="stylesheet" href="assets/css/panel.style.css">
+    <link rel="stylesheet" href="assets/css/customers.css">
 </head>
 <body>
 <header class="panel-header navbar sticky-top p-0 shadow-sm">
     <div class="panel-brand d-flex align-items-center px-3">
-        <div>
-            <strong>بنگاه املاک</strong>
-            <small class="d-block">مدیریت مشتری و ملک</small>
-        </div>
+        <div><strong>بنگاه املاک</strong><small class="d-block">مدیریت مشتری و ملک</small></div>
     </div>
     <div class="panel-topbar flex-grow-1 h-100 d-flex align-items-center justify-content-between px-3 px-md-4">
         <div class="d-flex align-items-center gap-2">
             <button class="mobile-menu-btn btn btn-light-panel" type="button" data-panel-sidebar-open
-                    aria-label="باز کردن منو">
-                <i class="bi bi-list fs-5"></i>
-            </button>
-            <span class="page-title">مشتری ها</span>
+                    aria-label="باز کردن منو"><i class="bi bi-list fs-5"></i></button>
+            <span class="page-title">داشبورد</span>
         </div>
-        <div class="user-menu">
-            <div class="text-end d-none d-sm-block">
-                <div class="fw-bold small">نازنین یحیی پور</div>
-                <div class="text-muted" style="font-size:11px">کارشناس املاک</div>
+        <div class="d-flex align-items-center gap-2">
+            <div class="dropdown notification-wrap">
+                <button class="notification-btn" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                        aria-expanded="false" aria-label="اعلان‌ها">
+                    <i class="bi bi-bell"></i><span class="notification-count">۳</span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-start notification-menu">
+                    <div class="dropdown-header d-flex justify-content-between align-items-center">
+                        <strong class="small">اعلان‌ها</strong><span
+                            class="badge bg-primary-subtle text-primary">۳ جدید</span>
+                    </div>
+                    <a class="notification-item" href="#">
+                        <span class="notification-icon"><i class="bi bi-person-check"></i></span>
+                        <span><strong>یک مشتری جدید ثبت شد</strong><small>مشتری «امیرحسین تقوی» به فهرست مشتری‌ها اضافه شده است.</small></span>
+                    </a>
+                    <a class="notification-item" href="properties.html">
+                        <span class="notification-icon"><i class="bi bi-building-check"></i></span>
+                        <span><strong>فایل جدید برای پیگیری</strong><small>یک ملک جدید در محدوده فرهنگ‌شهر ثبت شده است.</small></span>
+                    </a>
+                    <a class="notification-item" href="#">
+                        <span class="notification-icon"><i class="bi bi-calendar-event"></i></span>
+                        <span><strong>یادآوری پیگیری</strong><small>۲ پیگیری برای امروز باقی مانده است.</small></span>
+                    </a>
+                    <div class="p-2 text-center border-top"><a class="small fw-bold" href="#">مشاهده همه اعلان‌ها</a>
+                    </div>
+                </div>
             </div>
-            <span class="user-avatar">ن</span>
+            <div class="user-menu">
+                <div class="text-end d-none d-sm-block">
+                    <div class="fw-bold small">نازنین یحیی پور</div>
+                    <div class="text-muted" style="font-size:11px">کارشناس املاک</div>
+                </div>
+                <span class="user-avatar">ن</span>
+            </div>
         </div>
     </div>
 </header>
@@ -43,318 +66,229 @@
         </div>
         <nav class="nav flex-column">
             <div class="nav-section">مدیریت</div>
-            <li><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i><span>داشبورد</span></a>
+            <li><a class="nav-link active" href="dashboard.html"><i class="bi bi-speedometer2"></i><span>داشبورد</span></a>
             </li>
-            <li><a class="nav-link" href="properties.html"><i class="bi bi-building"></i><span>ملک‌های من</span></a>
+            <li><a class="nav-link " href="properties.html"><i class="bi bi-building"></i><span>ملک‌های من</span></a>
             </li>
-            <li><a class="nav-link" href="property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a>
+            <li><a class="nav-link " href="property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a>
             </li>
-            <li><a class="nav-link active" href="customers.html"><i class="bi bi-people"></i><span>مشتری‌ها</span></a></li>
-            <li><a class="nav-link" href="account.html"><i class="bi bi-person-circle"></i><span>حساب کاربری</span></a></li>
+            <li><a class="nav-link " href="customers.html"><i class="bi bi-people"></i><span>مشتری‌ها</span></a></li>
+            <li><a class="nav-link " href="account.html"><i class="bi bi-person-circle"></i><span>حساب کاربری</span></a>
+            </li>
             <div class="nav-section mt-2">حساب</div>
             <li><a class="nav-link logout" href="#"><i class="bi bi-box-arrow-right"></i><span>خروج از حساب</span></a>
             </li>
         </nav>
     </aside>
-    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-md-none" style="display:none;z-index:1010;"></div>
-
+    <div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-md-none"
+         style="display:none;z-index:1010;"></div>
     <main class="panel-main">
-        <div class="panel-content">
-            <div class="page-heading">
-                <div>
-                    <h1>مشتریان</h1>
-                    <p>مشتریانی که به دنبال خرید، اجاره یا رهن ملک هستند.</p>
-                </div>
+        <div class="page-heading">
+            <div><h1>مشتری‌ها</h1>
+                <p>مشتری‌ها را بر اساس نیاز، بودجه، محدوده و وضعیت پیگیری سریع پیدا کنید.</p></div>
+            <a href="customer-form.html" class="btn btn-primary px-4"><i class="bi bi-person-plus ms-1"></i> ثبت مشتری
+                جدید</a></div>
 
-                <a href="#" class="btn btn-primary px-4">
-                    <i class="bi bi-plus-lg"></i>
-                    مشتری جدید
-                </a>
+        <section class="card-panel pro-search-card mb-3">
+            <div class="pro-search-main">
+                <div class="pro-search-wrap"><i class="bi bi-search"></i><input id="customerSearch"
+                                                                                class="form-control pro-search-input"
+                                                                                type="search"
+                                                                                placeholder="نام، موبایل، محدوده، نیاز مشتری یا یادداشت را جستجو کنید..."
+                                                                                autocomplete="off">
+                    <button id="customerSearchBtn" class="btn btn-primary search-submit" type="button"><i
+                            class="bi bi-search ms-1"></i> جستجو
+                    </button>
+                </div>
+                <div class="search-hints">می‌توانید بخشی از نام یا شماره را وارد کنید؛ جستجو هم‌زمان روی اطلاعات تماس و
+                    نیاز مشتری انجام می‌شود.
+                </div>
+                <div class="quick-filter-row">
+                    <button class="search-chip active" data-customer-quick="all">همه مشتری‌ها</button>
+                    <button class="search-chip" data-customer-quick="buy">خریدار</button>
+                    <button class="search-chip" data-customer-quick="rent">اجاره</button>
+                    <button class="search-chip" data-customer-quick="mortgage">رهن</button>
+                    <button class="search-chip" data-customer-quick="urgent">پیگیری فوری</button>
+                    <button class="btn btn-link clear-search text-decoration-none me-auto p-1" id="clearCustomerSearch"
+                            type="button"><i class="bi bi-arrow-counterclockwise ms-1"></i>پاک کردن
+                    </button>
+                </div>
             </div>
-
-            <!-- Search / filters -->
-            <section class="filter-card">
-                <div class="search-wrap">
-                    <i class="bi bi-search"></i>
-                    <input type="text"
-                           class="form-control"
-                           id="customerSearch"
-                           placeholder="جستجوی مشتری، شماره موبایل یا محدوده...">
+            <div class="advanced-search collapse" id="advancedCustomerFilters">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <div class="filter-title">فیلترهای مشتری</div>
+                        <div class="section-subtitle">ترکیب چند معیار برای رسیدن به مشتری موردنظر.</div>
+                    </div>
+                    <button class="btn btn-sm btn-light-panel" id="resetCustomerFilters" type="button">حذف همه</button>
                 </div>
-
-                <div class="customer-filters">
-                    <button class="filter-chip active" data-filter="all">همه</button>
-                    <button class="filter-chip" data-filter="buy">خرید</button>
-                    <button class="filter-chip" data-filter="rent">اجاره</button>
-                    <button class="filter-chip" data-filter="mortgage">رهن</button>
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <div class="filter-section-label">نوع نیاز</div>
+                        <select id="cfType" class="form-select">
+                            <option value="">همه</option>
+                            <option value="buy">خرید</option>
+                            <option value="rent">اجاره</option>
+                            <option value="mortgage">رهن</option>
+                        </select></div>
+                    <div class="col-md-3">
+                        <div class="filter-section-label">نوع ملک</div>
+                        <select id="cfProperty" class="form-select">
+                            <option value="">همه</option>
+                            <option>آپارتمان</option>
+                            <option>ویلایی</option>
+                            <option>زمین</option>
+                        </select></div>
+                    <div class="col-md-3">
+                        <div class="filter-section-label">شهر</div>
+                        <input id="cfCity" class="form-control" placeholder="مثلاً شیراز"></div>
+                    <div class="col-md-3">
+                        <div class="filter-section-label">محدوده</div>
+                        <input id="cfArea" class="form-control" placeholder="مثلاً فرهنگ‌شهر"></div>
+                    <div class="col-md-3">
+                        <div class="filter-section-label">حداقل متراژ</div>
+                        <input id="cfMinArea" type="number" class="form-control" placeholder="مثلاً ۸۰"></div>
+                    <div class="col-md-3">
+                        <div class="filter-section-label">حداکثر متراژ</div>
+                        <input id="cfMaxArea" type="number" class="form-control" placeholder="مثلاً ۱۵۰"></div>
+                    <div class="col-md-3">
+                        <div class="filter-section-label">حداکثر خواب</div>
+                        <select id="cfRooms" class="form-select">
+                            <option value="">همه</option>
+                            <option value="1">۱ خواب</option>
+                            <option value="2">۲ خواب</option>
+                            <option value="3">۳ خواب</option>
+                            <option value="4">۴ خواب و بیشتر</option>
+                        </select></div>
+                    <div class="col-md-3">
+                        <div class="filter-section-label">وضعیت پیگیری</div>
+                        <select id="cfStatus" class="form-select">
+                            <option value="">همه</option>
+                            <option value="active">در حال پیگیری</option>
+                            <option value="urgent">فوری</option>
+                            <option value="closed">بسته‌شده</option>
+                        </select></div>
                 </div>
-            </section>
+            </div>
+            <div class="filter-summary"><span class="filter-summary-label">فیلترهای فعال:</span><span
+                    id="customerActiveFilters" class="d-flex flex-wrap gap-1"><span
+                    class="active-filter">بدون فیلتر</span></span>
+                <button class="btn btn-link clear-search text-decoration-none me-auto p-0" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#advancedCustomerFilters"><i
+                        class="bi bi-sliders ms-1"></i>فیلتر پیشرفته
+                </button>
+            </div>
+        </section>
 
-            <!-- Customers -->
-            <section class="customers-list" id="customersList">
-
-                <!-- Customer 1 -->
-                <article class="customer-card"
-                         data-name="امیرحسین تقوی"
-                         data-phone="09123334455"
-                         data-area="سعادت آباد"
-                         data-type="rent">
-
-                    <div class="customer-main">
-
-                        <div class="customer-avatar">ا</div>
-
-                        <div class="customer-info">
-                            <div class="customer-title-row">
-                                <h2>امیرحسین تقوی</h2>
-
-                                <div class="customer-tags">
-                                    <span class="tag tag-rent">اجاره</span>
-                                    <span class="tag tag-property">آپارتمان</span>
-                                </div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="search-results-meta" id="customerResultsMeta"></div>
+            <select id="customerSort" class="form-select form-select-sm" style="width:auto">
+                <option value="">مرتب‌سازی</option>
+                <option value="name">نام</option>
+                <option value="recent">آخرین پیگیری</option>
+                <option value="area">بیشترین متراژ</option>
+            </select></div>
+        <section class="customers-list" id="customersList">
+            <article class="customer-card" data-name="امیرحسین تقوی" data-phone="09123334455" data-city="تهران"
+                     data-area-name="سعادت آباد" data-type="rent" data-property="آپارتمان" data-minarea="80"
+                     data-maxarea="120" data-rooms="2" data-status="active">
+                <div class="customer-main">
+                    <div class="customer-avatar">ا</div>
+                    <div class="customer-info">
+                        <div class="customer-title-row"><h2>امیرحسین تقوی</h2>
+                            <div class="customer-tags"><span class="tag tag-rent">اجاره</span><span
+                                    class="tag tag-property">آپارتمان</span></div>
+                        </div>
+                        <div class="customer-contact"><span><i class="bi bi-telephone"></i>09123334455</span><span><i
+                                class="bi bi-geo-alt"></i>تهران، سعادت‌آباد</span></div>
+                        <div class="customer-requirements">
+                            <div class="requirement"><span class="requirement-label">متراژ</span><strong>۸۰ تا ۱۲۰
+                                متر</strong></div>
+                            <div class="requirement"><span class="requirement-label">بودجه</span><strong>رهن تا ۹۰۰
+                                میلیون</strong></div>
+                            <div class="requirement"><span class="requirement-label">خواب</span><strong>۲ خواب</strong>
                             </div>
-
-                            <div class="customer-contact">
-                                <span>
-                                    <i class="bi bi-telephone"></i>
-                                    09123334455
-                                </span>
-
-                                <span>
-                                    <i class="bi bi-geo-alt"></i>
-                                    تهران، سعادت‌آباد
-                                </span>
-                            </div>
-
-                            <div class="customer-requirements">
-                                <div class="requirement">
-                                    <span class="requirement-label">متراژ</span>
-                                    <strong>۸۰ تا ۱۲۰ متر</strong>
-                                </div>
-
-                                <div class="requirement">
-                                    <span class="requirement-label">بودجه</span>
-                                    <strong>رهن تا ۹۰۰ میلیون تومان</strong>
-                                </div>
-
-                                <div class="requirement">
-                                    <span class="requirement-label">خواب</span>
-                                    <strong>۲ خواب</strong>
-                                </div>
-                            </div>
-
-                            <div class="customer-note">
-                                <i class="bi bi-chat-left-text"></i>
-                                ترجیحاً با آسانسور و پارکینگ، زوج جوان
-                            </div>
+                        </div>
+                        <div class="customer-note"><i class="bi bi-chat-left-text"></i>ترجیحاً با آسانسور و پارکینگ، زوج
+                            جوان
                         </div>
                     </div>
-
-                    <div class="customer-actions">
-                        <div class="matches-box">
-                            <span>فایل‌های پیشنهادی</span>
-                            <strong>۱ فایل</strong>
-                        </div>
-
-                        <div class="action-buttons">
-                            <a href="#" class="btn btn-outline-secondary btn-sm">
-                                <i class="bi bi-eye"></i>
-                                مشاهده
-                            </a>
-
-                            <a href="#" class="btn btn-outline-primary btn-sm">
-                                <i class="bi bi-pencil"></i>
-                                ویرایش
-                            </a>
-
-                            <button type="button" class="btn btn-outline-danger btn-sm">
-                                حذف
-                            </button>
-                        </div>
-                    </div>
-
-                </article>
-
-
-                <!-- Customer 2 -->
-                <article class="customer-card"
-                         data-name="زهرا محمودی"
-                         data-phone="09357778899"
-                         data-area="محله آزاد"
-                         data-type="buy">
-
-                    <div class="customer-main">
-
-                        <div class="customer-avatar avatar-alt">ز</div>
-
-                        <div class="customer-info">
-                            <div class="customer-title-row">
-                                <h2>زهرا محمودی</h2>
-
-                                <div class="customer-tags">
-                                    <span class="tag tag-buy">خرید</span>
-                                    <span class="tag tag-property">آپارتمان</span>
-                                </div>
-                            </div>
-
-                            <div class="customer-contact">
-                                <span>
-                                    <i class="bi bi-telephone"></i>
-                                    09357778899
-                                </span>
-
-                                <span>
-                                    <i class="bi bi-geo-alt"></i>
-                                    کرمان، محله آزاد
-                                </span>
-                            </div>
-
-                            <div class="customer-requirements">
-                                <div class="requirement">
-                                    <span class="requirement-label">متراژ</span>
-                                    <strong>۱۱۰ تا ۱۶۰ متر</strong>
-                                </div>
-
-                                <div class="requirement">
-                                    <span class="requirement-label">بودجه</span>
-                                    <strong>تا ۲۰ میلیارد تومان</strong>
-                                </div>
-
-                                <div class="requirement">
-                                    <span class="requirement-label">خواب</span>
-                                    <strong>۳ خواب</strong>
-                                </div>
-                            </div>
-
-                            <div class="customer-note">
-                                <i class="bi bi-chat-left-text"></i>
-                                پارکینگ و آسانسور الزامی، ترجیحاً نوساز
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="customer-actions">
-                        <div class="matches-box">
-                            <span>فایل‌های پیشنهادی</span>
-                            <strong>۳ فایل</strong>
-                        </div>
-
-                        <div class="action-buttons">
-                            <a href="#" class="btn btn-outline-secondary btn-sm">
-                                <i class="bi bi-eye"></i>
-                                مشاهده
-                            </a>
-
-                            <a href="#" class="btn btn-outline-primary btn-sm">
-                                <i class="bi bi-pencil"></i>
-                                ویرایش
-                            </a>
-
-                            <button type="button" class="btn btn-outline-danger btn-sm">
-                                حذف
-                            </button>
-                        </div>
-                    </div>
-
-                </article>
-
-
-                <!-- Customer 3 -->
-                <article class="customer-card"
-                         data-name="محمد رضایی"
-                         data-phone="09124445566"
-                         data-area="اما جمعه"
-                         data-type="mortgage">
-
-                    <div class="customer-main">
-
-                        <div class="customer-avatar avatar-green">م</div>
-
-                        <div class="customer-info">
-                            <div class="customer-title-row">
-                                <h2>محمد رضایی</h2>
-
-                                <div class="customer-tags">
-                                    <span class="tag tag-mortgage">رهن</span>
-                                    <span class="tag tag-property">آپارتمان</span>
-                                </div>
-                            </div>
-
-                            <div class="customer-contact">
-                                <span>
-                                    <i class="bi bi-telephone"></i>
-                                    09124445566
-                                </span>
-
-                                <span>
-                                    <i class="bi bi-geo-alt"></i>
-                                    کرمان، اما جمعه
-                                </span>
-                            </div>
-
-                            <div class="customer-requirements">
-                                <div class="requirement">
-                                    <span class="requirement-label">متراژ</span>
-                                    <strong>۹۰ تا ۱۳۰ متر</strong>
-                                </div>
-
-                                <div class="requirement">
-                                    <span class="requirement-label">بودجه</span>
-                                    <strong>رهن تا ۷۰۰ میلیون</strong>
-                                </div>
-
-                                <div class="requirement">
-                                    <span class="requirement-label">خواب</span>
-                                    <strong>۲ خواب</strong>
-                                </div>
-                            </div>
-
-                            <div class="customer-note">
-                                <i class="bi bi-chat-left-text"></i>
-                                محدوده اما جمعه و خیابان‌های اطراف
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="customer-actions">
-                        <div class="matches-box">
-                            <span>فایل‌های پیشنهادی</span>
-                            <strong>۲ فایل</strong>
-                        </div>
-
-                        <div class="action-buttons">
-                            <a href="#" class="btn btn-outline-secondary btn-sm">
-                                <i class="bi bi-eye"></i>
-                                مشاهده
-                            </a>
-
-                            <a href="#" class="btn btn-outline-primary btn-sm">
-                                <i class="bi bi-pencil"></i>
-                                ویرایش
-                            </a>
-
-                            <button type="button" class="btn btn-outline-danger btn-sm">
-                                حذف
-                            </button>
-                        </div>
-                    </div>
-
-                </article>
-
-                <div id="emptyState" class="empty-state d-none">
-                    <i class="bi bi-person-x"></i>
-                    <h3>مشتری‌ای پیدا نشد</h3>
-                    <p>عبارت جستجو یا فیلتر انتخاب‌شده را تغییر دهید.</p>
                 </div>
-
-            </section>
-
+                <div class="customer-actions">
+                    <div class="matches-box"><span>فایل‌های پیشنهادی</span><strong>۱ فایل</strong></div>
+                    <a href="customer-form.html" class="btn btn-light-panel btn-sm">مشاهده / ویرایش</a></div>
+            </article>
+            <article class="customer-card" data-name="سارا مرادی" data-phone="09171234567" data-city="شیراز"
+                     data-area-name="فرهنگ شهر" data-type="buy" data-property="آپارتمان" data-minarea="100"
+                     data-maxarea="160" data-rooms="3" data-status="urgent">
+                <div class="customer-main">
+                    <div class="customer-avatar avatar-alt">س</div>
+                    <div class="customer-info">
+                        <div class="customer-title-row"><h2>سارا مرادی</h2>
+                            <div class="customer-tags"><span class="tag tag-buy">خرید</span><span
+                                    class="tag tag-property">آپارتمان</span><span class="tag"
+                                                                                  style="background:#fff0f0;color:#c33">فوری</span>
+                            </div>
+                        </div>
+                        <div class="customer-contact"><span><i class="bi bi-telephone"></i>09171234567</span><span><i
+                                class="bi bi-geo-alt"></i>شیراز، فرهنگ‌شهر</span></div>
+                        <div class="customer-requirements">
+                            <div class="requirement"><span class="requirement-label">متراژ</span><strong>۱۰۰ تا ۱۶۰
+                                متر</strong></div>
+                            <div class="requirement"><span class="requirement-label">بودجه</span><strong>تا ۸
+                                میلیارد</strong></div>
+                            <div class="requirement"><span class="requirement-label">خواب</span><strong>۳ خواب</strong>
+                            </div>
+                        </div>
+                        <div class="customer-note"><i class="bi bi-chat-left-text"></i>پارکینگ و آسانسور الزامی؛ ترجیحاً
+                            نورگیر.
+                        </div>
+                    </div>
+                </div>
+                <div class="customer-actions">
+                    <div class="matches-box"><span>فایل‌های پیشنهادی</span><strong>۴ فایل</strong></div>
+                    <a href="customer-form.html" class="btn btn-light-panel btn-sm">مشاهده / ویرایش</a></div>
+            </article>
+            <article class="customer-card" data-name="رضا کاظمی" data-phone="09351239876" data-city="شیراز"
+                     data-area-name="معالی آباد" data-type="mortgage" data-property="آپارتمان" data-minarea="70"
+                     data-maxarea="110" data-rooms="2" data-status="active">
+                <div class="customer-main">
+                    <div class="customer-avatar avatar-green">ر</div>
+                    <div class="customer-info">
+                        <div class="customer-title-row"><h2>رضا کاظمی</h2>
+                            <div class="customer-tags"><span class="tag tag-mortgage">رهن</span><span
+                                    class="tag tag-property">آپارتمان</span></div>
+                        </div>
+                        <div class="customer-contact"><span><i class="bi bi-telephone"></i>09351239876</span><span><i
+                                class="bi bi-geo-alt"></i>شیراز، معالی‌آباد</span></div>
+                        <div class="customer-requirements">
+                            <div class="requirement"><span class="requirement-label">متراژ</span><strong>۷۰ تا ۱۱۰
+                                متر</strong></div>
+                            <div class="requirement"><span class="requirement-label">بودجه</span><strong>رهن تا ۷۰۰
+                                میلیون</strong></div>
+                            <div class="requirement"><span class="requirement-label">خواب</span><strong>۲ خواب</strong>
+                            </div>
+                        </div>
+                        <div class="customer-note"><i class="bi bi-chat-left-text"></i>ورودی مستقل و دسترسی مناسب به
+                            مرکز شهر.
+                        </div>
+                    </div>
+                </div>
+                <div class="customer-actions">
+                    <div class="matches-box"><span>فایل‌های پیشنهادی</span><strong>۲ فایل</strong></div>
+                    <a href="customer-form.html" class="btn btn-light-panel btn-sm">مشاهده / ویرایش</a></div>
+            </article>
+        </section>
+        <div id="customerEmpty" class="notification-empty d-none card-panel mt-3"><i
+                class="bi bi-person-x fs-3 d-block mb-2"></i>مشتری‌ای با این معیارها پیدا نشد.
+            <div class="mt-2">
+                <button id="emptyClearCustomer" class="btn btn-sm btn-light-panel">پاک کردن فیلترها</button>
+            </div>
         </div>
     </main>
 </div>
+<script src="assets/js/bootstrap.bundle.js"></script>
 <script src="assets/js/panel.js"></script>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="customers.js"></script>
-
+<script src="assets/js/customers.js"></script>
 </body>
 </html>

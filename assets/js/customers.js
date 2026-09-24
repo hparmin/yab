@@ -1,91 +1,17 @@
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const sidebar = document.getElementById("panelSidebar");
-    const overlay = document.getElementById("sidebarOverlay");
-    const openBtn = document.querySelector("[data-panel-sidebar-open]");
-    const closeBtns = document.querySelectorAll("[data-panel-sidebar-close]");
-
-    function openSidebar() {
-        if (!sidebar) return;
-        sidebar.classList.add("show");
-        overlay?.classList.add("show");
-    }
-
-    function closeSidebar() {
-        if (!sidebar) return;
-        sidebar.classList.remove("show");
-        overlay?.classList.remove("show");
-    }
-
-    // Toggle: کلیک دوم روی همان دکمه منو را می‌بندد.
-    openBtn?.addEventListener("click", function () {
-        if (sidebar?.classList.contains("show")) {
-            closeSidebar();
-        } else {
-            openSidebar();
-        }
-    });
-
-    closeBtns.forEach(function (btn) {
-        btn.addEventListener("click", closeSidebar);
-    });
-
-    overlay?.addEventListener("click", closeSidebar);
-
-
-    // Customer search
-    const searchInput = document.getElementById("customerSearch");
-    const cards = [...document.querySelectorAll(".customer-card")];
-    const emptyState = document.getElementById("emptyState");
-    const filterButtons = [...document.querySelectorAll(".filter-chip")];
-
-    let activeFilter = "all";
-
-    function refreshCustomers() {
-        const query = (searchInput?.value || "").trim().toLowerCase();
-        let visibleCount = 0;
-
-        cards.forEach(function (card) {
-
-            const text = [
-                card.dataset.name || "",
-                card.dataset.phone || "",
-                card.dataset.area || "",
-                card.innerText || ""
-            ].join(" ").toLowerCase();
-
-            const matchesSearch = !query || text.includes(query);
-            const matchesFilter =
-                activeFilter === "all" ||
-                card.dataset.type === activeFilter;
-
-            const visible = matchesSearch && matchesFilter;
-
-            card.classList.toggle("d-none", !visible);
-
-            if (visible) {
-                visibleCount++;
-            }
-        });
-
-        emptyState?.classList.toggle("d-none", visibleCount !== 0);
-    }
-
-    searchInput?.addEventListener("input", refreshCustomers);
-
-    filterButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-
-            filterButtons.forEach(function (btn) {
-                btn.classList.remove("active");
-            });
-
-            this.classList.add("active");
-            activeFilter = this.dataset.filter || "all";
-
-            refreshCustomers();
-        });
-    });
-
+document.addEventListener("DOMContentLoaded",()=>{
+ const cards=[...document.querySelectorAll(".customer-card")], q=document.getElementById("customerSearch"), empty=document.getElementById("customerEmpty"), meta=document.getElementById("customerResultsMeta"), summary=document.getElementById("customerActiveFilters"); let quick="all";
+ const $=id=>document.getElementById(id), n=v=>(v||"").toString().trim().toLowerCase().replace(/[يى]/g,"ی").replace(/ك/g,"ک");
+ function f(){return{type:$("cfType").value,property:$("cfProperty").value,city:$("cfCity").value,area:$("cfArea").value,min:+$("cfMinArea").value||null,max:+$("cfMaxArea").value||null,rooms:$("cfRooms").value,status:$("cfStatus").value}}
+ function render(){const x=f(), query=n(q.value);let c=0;
+ cards.forEach(card=>{let hay=n([card.dataset.name,card.dataset.phone,card.dataset.city,card.dataset.areaName,card.innerText].join(" ")),ok=!query||hay.includes(query);
+ if(x.type)ok&&=card.dataset.type===x.type;if(x.property)ok&&=card.dataset.property===x.property;if(x.city)ok&&=n(card.dataset.city).includes(n(x.city));if(x.area)ok&&=n(card.dataset.areaName).includes(n(x.area));
+ if(x.min)ok&&=+card.dataset.maxarea>=x.min;if(x.max)ok&&=+card.dataset.minarea<=x.max;if(x.rooms==="4")ok&&=+card.dataset.rooms>=4;else if(x.rooms)ok&&=+card.dataset.rooms===+x.rooms;if(x.status)ok&&=card.dataset.status===x.status;
+ if(quick==="buy"||quick==="rent"||quick==="mortgage")ok&&=card.dataset.type===quick;if(quick==="urgent")ok&&=card.dataset.status==="urgent";
+ card.classList.toggle("d-none",!ok);if(ok)c++});
+ let labels=[];if(x.type)labels.push({buy:"خرید",rent:"اجاره",mortgage:"رهن"}[x.type]);if(x.property)labels.push(x.property);if(x.city)labels.push("شهر: "+x.city);if(x.area)labels.push("محدوده: "+x.area);if(x.min||x.max)labels.push(`متراژ ${x.min||"۰"} تا ${x.max||"∞"}`);if(x.rooms)labels.push(x.rooms==="4"?"۴ خواب و بیشتر":x.rooms+" خواب");if(x.status)labels.push({active:"در حال پیگیری",urgent:"فوری",closed:"بسته‌شده"}[x.status]);
+ summary.innerHTML=labels.length?labels.map(v=>`<span class="active-filter">${v}</span>`).join(""):`<span class="active-filter">بدون فیلتر</span>`;meta.textContent=`${c} مشتری از ${cards.length} مشتری نمونه نمایش داده می‌شود`;empty.classList.toggle("d-none",c!==0)}
+ function reset(){document.querySelectorAll("#advancedCustomerFilters input").forEach(x=>x.value="");document.querySelectorAll("#advancedCustomerFilters select").forEach(x=>x.value="");q.value="";quick="all";document.querySelectorAll("[data-customer-quick]").forEach(x=>x.classList.toggle("active",x.dataset.customerQuick==="all"));render()}
+ document.querySelectorAll("[data-customer-quick]").forEach(b=>b.addEventListener("click",()=>{quick=b.dataset.customerQuick;document.querySelectorAll("[data-customer-quick]").forEach(x=>x.classList.remove("active"));b.classList.add("active");render()}));
+ document.querySelectorAll("#advancedCustomerFilters input,#advancedCustomerFilters select").forEach(x=>x.addEventListener("input",render));q.addEventListener("input",render);$("customerSearchBtn").addEventListener("click",render);$("clearCustomerSearch").addEventListener("click",reset);$("resetCustomerFilters").addEventListener("click",reset);$("emptyClearCustomer").addEventListener("click",reset);
+ $("customerSort").addEventListener("change",e=>{let type=e.target.value;if(!type)return;cards.sort((a,b)=>type==="name"?a.dataset.name.localeCompare(b.dataset.name,"fa"):type==="area"?+b.dataset.maxarea-+a.dataset.maxarea:0).forEach(c=>document.getElementById("customersList").appendChild(c))});render();
 });

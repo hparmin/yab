@@ -5,7 +5,7 @@
    ========================================= */
 
 :root {
-    --panel-bg: #f5f2ec;
+    --panel-bg: #f6f7fb;
     --panel-card: #ffffff;
     --panel-dark: #202c31;
     --panel-dark-2: #26353b;
@@ -20,14 +20,6 @@
 .panel-main {
     min-height: 100vh;
     margin-right: 250px;
-}
-.panel-topbar {
-    height: 58px;
-    background: #1c272b;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
 }
 .topbar-title {
     font-size: 14px;

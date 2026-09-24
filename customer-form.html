@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ثبت مشتری جدید</title><link rel="stylesheet" href="assets/css/bootstrap.min.css"><link rel="stylesheet" href="assets/css/bootstrap.icons.css"><link rel="stylesheet" href="assets/css/panel.style.css"></head>
+<body>
+<header class="panel-header navbar sticky-top p-0 shadow-sm">
+  <div class="panel-brand d-flex align-items-center px-3">
+    <div><strong>بنگاه املاک</strong><small class="d-block">مدیریت مشتری و ملک</small></div>
+  </div>
+  <div class="panel-topbar flex-grow-1 h-100 d-flex align-items-center justify-content-between px-3 px-md-4">
+    <div class="d-flex align-items-center gap-2">
+      <button class="mobile-menu-btn btn btn-light-panel" type="button" data-panel-sidebar-open aria-label="باز کردن منو"><i class="bi bi-list fs-5"></i></button>
+      <span class="page-title">ثبت مشتری</span>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <div class="dropdown notification-wrap">
+        <button class="notification-btn" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-label="اعلان‌ها">
+          <i class="bi bi-bell"></i><span class="notification-count">۳</span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-start notification-menu">
+          <div class="dropdown-header d-flex justify-content-between align-items-center">
+            <strong class="small">اعلان‌ها</strong><span class="badge bg-primary-subtle text-primary">۳ جدید</span>
+          </div>
+          <a class="notification-item" href="#">
+            <span class="notification-icon"><i class="bi bi-person-check"></i></span>
+            <span><strong>یک مشتری جدید ثبت شد</strong><small>مشتری «امیرحسین تقوی» به فهرست مشتری‌ها اضافه شده است.</small></span>
+          </a>
+          <a class="notification-item" href="properties.html">
+            <span class="notification-icon"><i class="bi bi-building-check"></i></span>
+            <span><strong>فایل جدید برای پیگیری</strong><small>یک ملک جدید در محدوده فرهنگ‌شهر ثبت شده است.</small></span>
+          </a>
+          <a class="notification-item" href="#">
+            <span class="notification-icon"><i class="bi bi-calendar-event"></i></span>
+            <span><strong>یادآوری پیگیری</strong><small>۲ پیگیری برای امروز باقی مانده است.</small></span>
+          </a>
+          <div class="p-2 text-center border-top"><a class="small fw-bold" href="#">مشاهده همه اعلان‌ها</a></div>
+        </div>
+      </div>
+      <div class="user-menu">
+        <div class="text-end d-none d-sm-block"><div class="fw-bold small">نازنین یحیی پور</div><div class="text-muted" style="font-size:11px">کارشناس املاک</div></div>
+        <span class="user-avatar">ن</span>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="panel-shell"><aside id="panelSidebar" class="panel-sidebar"><div class="offcanvas-header d-md-none p-3 border-bottom"><strong>منوی پنل</strong><button class="btn-close" data-panel-sidebar-close></button></div><nav class="nav flex-column">
+<div class="nav-section">مدیریت</div><li><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i><span>داشبورد</span></a></li><li><a class="nav-link" href="properties.html"><i class="bi bi-building"></i><span>ملک‌های من</span></a></li><li><a class="nav-link" href="property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a></li><li><a class="nav-link active" href="customers.html"><i class="bi bi-people"></i><span>مشتری‌ها</span></a></li><li><a class="nav-link" href="account.html"><i class="bi bi-person-circle"></i><span>حساب کاربری</span></a></li><div class="nav-section mt-2">حساب</div><li><a class="nav-link logout" href="#"><i class="bi bi-box-arrow-right"></i><span>خروج از حساب</span></a></li></nav></aside>
+<div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-md-none" style="display:none;z-index:1010;"></div>
+<main class="panel-main">
+<div class="page-heading"><div><h1>ثبت مشتری جدید</h1><p>اطلاعات تماس و نیاز مشتری را ثبت کنید تا بعداً سریع‌تر فایل مناسب پیدا شود.</p></div><a href="customers.html" class="btn btn-light-panel"><i class="bi bi-arrow-right ms-1"></i> بازگشت به مشتری‌ها</a></div>
+<form id="customerForm">
+<div class="form-section light-gray-form-section"><div class="form-section-title"><i class="bi bi-person-vcard"></i> اطلاعات مشتری</div><div class="row g-3">
+<div class="col-md-6"><label class="form-label required">نام و نام خانوادگی</label><input class="form-control" required placeholder="مثلاً محمد رضایی"></div>
+<div class="col-md-6"><label class="form-label required">شماره موبایل</label><input class="form-control" type="tel" inputmode="numeric" required placeholder="۰۹۱۲xxxxxxx"></div>
+<div class="col-md-4"><label class="form-label">شماره تماس دوم</label><input class="form-control" type="tel" placeholder="اختیاری"></div>
+<div class="col-md-4"><label class="form-label">شهر</label><input class="form-control" placeholder="مثلاً شیراز"></div>
+<div class="col-md-4"><label class="form-label">محدوده فعلی</label><input class="form-control" placeholder="اختیاری"></div>
+</div></div>
+<div class="form-section light-gray-form-section"><div class="form-section-title"><i class="bi bi-house-heart"></i> نیاز مشتری</div><div class="row g-3">
+<div class="col-md-4"><label class="form-label required">نوع درخواست</label><select class="form-select" required><option value="">انتخاب کنید</option><option>خرید</option><option>اجاره</option><option>رهن</option><option>رهن و اجاره</option></select></div>
+<div class="col-md-4"><label class="form-label required">نوع ملک</label><select class="form-select" required><option value="">انتخاب کنید</option><option>آپارتمان</option><option>ویلایی</option><option>زمین</option><option>تجاری</option></select></div>
+<div class="col-md-4"><label class="form-label">اولویت پیگیری</label><select class="form-select"><option>عادی</option><option>فوری</option><option>کم‌اهمیت</option></select></div>
+<div class="col-md-6"><label class="form-label">محدوده‌های موردنظر</label><input class="form-control" placeholder="مثلاً فرهنگ‌شهر، معالی‌آباد"></div>
+<div class="col-md-3"><label class="form-label">حداقل متراژ</label><input type="number" class="form-control" placeholder="مثلاً ۸۰"></div>
+<div class="col-md-3"><label class="form-label">حداکثر متراژ</label><input type="number" class="form-control" placeholder="مثلاً ۱۵۰"></div>
+<div class="col-md-3"><label class="form-label">تعداد خواب</label><select class="form-select"><option>فرقی ندارد</option><option>۱</option><option>۲</option><option>۳</option><option>۴+</option></select></div>
+<div class="col-md-3"><label class="form-label">حداکثر بودجه</label><input class="form-control" placeholder="مثلاً ۸ میلیارد تومان"></div>
+<div class="col-md-3"><label class="form-label">حداکثر رهن</label><input class="form-control" placeholder="مثلاً ۹۰۰ میلیون"></div>
+<div class="col-md-3"><label class="form-label">حداکثر اجاره</label><input class="form-control" placeholder="مثلاً ۲۰ میلیون"></div>
+<div class="col-12"><label class="form-label">امکانات ضروری</label><div class="d-flex flex-wrap gap-2">
+<label class="btn btn-light-panel"><input class="form-check-input ms-1" type="checkbox"> پارکینگ</label><label class="btn btn-light-panel"><input class="form-check-input ms-1" type="checkbox"> آسانسور</label><label class="btn btn-light-panel"><input class="form-check-input ms-1" type="checkbox"> انباری</label><label class="btn btn-light-panel"><input class="form-check-input ms-1" type="checkbox"> بالکن</label>
+</div></div>
+</div></div>
+<div class="form-section"><div class="form-section-title"><i class="bi bi-chat-left-text"></i> توضیحات و پیگیری</div><div class="row g-3"><div class="col-md-6"><label class="form-label">توضیحات نیاز مشتری</label><textarea class="form-control" rows="4" placeholder="ترجیحات، شرایط خاص، توضیحات تماس و..."></textarea></div><div class="col-md-6"><label class="form-label">یادداشت داخلی</label><textarea class="form-control" rows="4" placeholder="یادداشت‌هایی که فقط خودتان/مجموعه می‌بینید..."></textarea></div><div class="col-md-4"><label class="form-label">تاریخ پیگیری بعدی</label><input type="text" class="form-control" placeholder="مثلاً ۱۴۰۵/۰۷/۰۵"></div><div class="col-md-4"><label class="form-label">روش تماس ترجیحی</label><select class="form-select"><option>تماس تلفنی</option><option>پیامک</option><option>واتساپ</option></select></div></div></div>
+<div class="d-flex justify-content-end gap-2"><a href="customers.html" class="btn btn-light-panel px-4">انصراف</a><button class="btn btn-primary px-5" type="submit"><i class="bi bi-check2-circle ms-1"></i> ذخیره مشتری</button></div>
+</form>
+</main></div>
+<script src="assets/js/bootstrap.bundle.js"></script><script src="assets/js/panel.js"></script><script>document.getElementById("customerForm").addEventListener("submit",e=>{e.preventDefault();alert("در نسخه فرانت‌اند، اطلاعات ذخیره نشد. این فرم برای اتصال به API لاراول آماده است.");});</script>
+</body></html>
