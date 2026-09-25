@@ -1003,3 +1003,209 @@ html[data-theme="dark"] .panel-sidebar::-webkit-scrollbar-thumb:hover {
     background: #6b7280;
     background-clip: padding-box;
 }
+
+/* ========== Number inputs theme-aware (spinners + color-scheme) ========== */
+input[type="number"],
+input[type="number"].form-control {
+  color-scheme: light;
+  background-color: #fff;
+  color: var(--panel-text);
+  border-color: #dfe4ec;
+}
+html[data-theme="dark"] input[type="number"],
+html[data-theme="dark"] input[type="number"].form-control {
+  color-scheme: dark;
+  background-color: #202b3e !important;
+  color: #e5e7eb !important;
+  border-color: #3d4a5e !important;
+}
+html[data-theme="dark"] input[type="number"]::placeholder,
+html[data-theme="dark"] input[type="number"].form-control::placeholder {
+  color: #7f8a9d !important;
+}
+/* Hide default spinners inconsistently; keep them theme-aware when visible */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+/* ========== Toggle pills / amenities dark mode checked state ========== */
+html[data-theme="dark"] .toggle-pill input:checked + label {
+  background: #1e3a8a !important;
+  color: #bfdbfe !important;
+  border-color: #3b82f6 !important;
+  font-weight: 700;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.35);
+}
+/* Make checkboxes visible (fallback if display:none is problematic) */
+.toggle-pill {
+  position: relative;
+}
+.toggle-pill input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.toggle-pill label {
+  position: relative;
+  padding-right: 28px;
+}
+.toggle-pill label::before {
+  content: "";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #c5ccd8;
+  border-radius: 4px;
+  background: #fff;
+  transition: 0.15s ease;
+}
+.toggle-pill input:checked + label::before {
+  background: var(--panel-primary);
+  border-color: var(--panel-primary);
+}
+.toggle-pill input:checked + label::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: translateY(-60%) rotate(45deg);
+}
+html[data-theme="dark"] .toggle-pill label::before {
+  background: #1b2638;
+  border-color: #4b5568;
+}
+html[data-theme="dark"] .toggle-pill input:checked + label::before {
+  background: #3b82f6;
+  border-color: #60a5fa;
+}
+
+/* ========== Mobile header overlap fix ========== */
+.panel-header.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+.panel-shell {
+  position: relative;
+}
+@media (max-width: 767.98px) {
+  .panel-main {
+    padding-top: 18px;
+  }
+  /* Ensure content starts below sticky header (header is outside panel-shell flow as sticky) */
+  body {
+    padding-top: 0;
+  }
+  .panel-header {
+    height: 64px;
+    min-height: 64px;
+  }
+  .page-heading {
+    margin-top: 4px;
+  }
+}
+
+/* Apply filters button in advanced search */
+.filter-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--panel-border);
+}
+html[data-theme="dark"] .filter-actions-row {
+  border-color: #303b4d;
+}
+
+/* Extra safety: prevent sticky header from overlapping page content on mobile */
+@media (max-width: 767.98px) {
+  .panel-header.navbar.sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    height: auto;
+    min-height: 64px;
+  }
+  .panel-shell {
+    margin-top: 0;
+  }
+  .panel-main {
+    padding-top: 20px !important;
+  }
+  .page-heading {
+    padding-top: 2px;
+  }
+}
+
+/* ========== Theme-aware scrollbars (table-responsive, overflow areas) ========== */
+.table-responsive,
+.table-panel,
+.panel-main {
+  scrollbar-width: thin;
+  scrollbar-color: #c5ccd8 transparent;
+}
+.table-responsive::-webkit-scrollbar,
+.table-panel::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.table-responsive::-webkit-scrollbar-track,
+.table-panel::-webkit-scrollbar-track {
+  background: #eef1f6;
+  border-radius: 8px;
+}
+.table-responsive::-webkit-scrollbar-thumb,
+.table-panel::-webkit-scrollbar-thumb {
+  background: #c5ccd8;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.table-responsive::-webkit-scrollbar-thumb:hover,
+.table-panel::-webkit-scrollbar-thumb:hover {
+  background: #a8b0c0;
+  background-clip: padding-box;
+}
+
+html[data-theme="dark"] .table-responsive,
+html[data-theme="dark"] .table-panel,
+html[data-theme="dark"] .panel-main {
+  scrollbar-color: #4b5568 #1b2638;
+}
+html[data-theme="dark"] .table-responsive::-webkit-scrollbar-track,
+html[data-theme="dark"] .table-panel::-webkit-scrollbar-track {
+  background: #1b2638;
+}
+html[data-theme="dark"] .table-responsive::-webkit-scrollbar-thumb,
+html[data-theme="dark"] .table-panel::-webkit-scrollbar-thumb {
+  background: #4b5568;
+  background-clip: padding-box;
+}
+html[data-theme="dark"] .table-responsive::-webkit-scrollbar-thumb:hover,
+html[data-theme="dark"] .table-panel::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+  background-clip: padding-box;
+}
+
+/* Ensure table-responsive can show horizontal scrollbar cleanly on mobile */
+@media (max-width: 767.98px) {
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table-panel {
+    overflow-x: auto;
+  }
+}

@@ -145,11 +145,13 @@
         <div class="form-section-title"><i class="bi bi-house"></i> اطلاعات اصلی ملک</div>
         <div class="row g-3">
           <div class="col-md-4"><label class="form-label required">نوع ملک</label><select class="form-select"><option>آپارتمان</option><option>زمین</option><option>ویلایی</option><option>تجاری</option><option>اداری</option><option>سایر</option></select></div>
-          <div class="col-md-4"><label class="form-label required">مساحت کل (متر)</label><input type="number" class="form-control" placeholder="مثلاً ۱۲۰"></div>
-          <div class="col-md-4"><label class="form-label">زیر بنا (متر)</label><input type="number" class="form-control" placeholder="مثلاً ۱۱۰"></div>
-          <div class="col-md-4"><label class="form-label">تعداد کل طبقات</label><input type="number" class="form-control"></div>
-          <div class="col-md-4"><label class="form-label">تعداد واحد در هر طبقه</label><input type="number" class="form-control"></div>
-          <div class="col-md-4"><label class="form-label">تعداد خواب</label><input type="number" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label required">کاربری ملک</label><select class="form-select" name="property_usage"><option value="">انتخاب کنید</option><option value="مسکونی">مسکونی</option><option value="تجاری">تجاری</option><option value="اداری">اداری</option><option value="صنعتی">صنعتی</option><option value="آموزشی">آموزشی</option><option value="سایر">سایر</option></select></div>
+          <div class="col-md-4"><label class="form-label">میزان وقف</label><input type="number" class="form-control" name="waqf_amount" placeholder="مثلاً ۰" min="0"></div>
+          <div class="col-md-4"><label class="form-label required">مساحت کل (متر)</label><input type="number" min="0" class="form-control" placeholder="مثلاً ۱۲۰"></div>
+          <div class="col-md-4"><label class="form-label">زیر بنا (متر)</label><input type="number" min="0" class="form-control" placeholder="مثلاً ۱۱۰"></div>
+          <div class="col-md-4"><label class="form-label">تعداد کل طبقات</label><input type="number" min="0" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label">تعداد واحد در هر طبقه</label><input type="number" min="0" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label">تعداد خواب</label><input type="number" min="0" class="form-control"></div>
           <div class="col-md-4"><label class="form-label">طبقه</label><input type="text" class="form-control" placeholder="مثلاً ۳"></div>
           <div class="col-md-4"><label class="form-label required">استان</label><select class="form-select" id="provinceSelect"><option>فارس</option><option>تهران</option><option>اصفهان</option><option>خوزستان</option><option>سایر</option></select></div>
           <div class="col-md-4"><label class="form-label required">شهر</label><input type="text" class="form-control" id="cityInput" placeholder="مثلاً شیراز"></div>
@@ -204,17 +206,17 @@
         <div class="form-section-title"><i class="bi bi-building"></i> مشخصات ملک</div>
         <div class="row g-3">
           <div class="col-md-4"><label class="form-label">وضعیت بنا</label><select class="form-select"><option>نوساز</option><option>کلنگی</option><option>چند سال ساخت</option><option>بازسازی شده</option></select></div>
-          <div class="col-md-4"><label class="form-label">سال ساخت</label><input type="number" class="form-control" placeholder="۱۴۰۴"></div>
-          <div class="col-md-4"><label class="form-label">تعداد کل واحدها</label><input type="number" class="form-control"></div>
-          <div class="col-md-4"><label class="form-label">تعداد واگذاری</label><input type="number" class="form-control"></div>
-          <div class="col-md-4"><label class="form-label">متراژ تجاری</label><input type="number" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label">سال ساخت</label><input type="number" min="0" class="form-control" placeholder="۱۴۰۴"></div>
+          <div class="col-md-4"><label class="form-label">تعداد کل واحدها</label><input type="number" min="0" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label">تعداد واگذاری</label><input type="number" min="0" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label">متراژ تجاری</label><input type="number" min="0" class="form-control"></div>
           <div class="col-md-4"><label class="form-label">جهت</label><select class="form-select"><option>شمالی</option><option>جنوبی</option><option>شرقی</option><option>غربی</option><option>دو نبش</option></select></div>
           <div class="col-md-4"><label class="form-label">نما</label><input type="text" class="form-control" placeholder="سنگ، آجر، مدرن..."></div>
           <div class="col-md-4"><label class="form-label">کف‌پوش</label><input type="text" class="form-control" placeholder="سرامیک، پارکت..."></div>
           <div class="col-md-4"><label class="form-label">سرویس آشپزخانه</label><input type="text" class="form-control" placeholder="کابینت، گاز، هود..."></div>
           <div class="col-md-4"><label class="form-label">ارتفاع سقف</label><input type="text" class="form-control" placeholder="مثلاً ۳ متر"></div>
-          <div class="col-md-4"><label class="form-label">متراژ بر ملک</label><input type="number" class="form-control"></div>
-          <div class="col-md-4"><label class="form-label">متراژ طول ملک</label><input type="number" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label">متراژ بر ملک</label><input type="number" min="0" class="form-control"></div>
+          <div class="col-md-4"><label class="form-label">متراژ طول ملک</label><input type="number" min="0" class="form-control"></div>
         </div>
       </div>
 

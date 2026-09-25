@@ -128,3 +128,27 @@ document.addEventListener("DOMContentLoaded", function () {
     sort?.addEventListener("change", refreshRows);
 });
 
+
+/* Prevent negative values on all number inputs site-wide */
+(function () {
+  function clampNumberInput(el) {
+    if (!el || el.type !== "number") return;
+    if (!el.hasAttribute("min")) el.setAttribute("min", "0");
+    const min = parseFloat(el.getAttribute("min"));
+    const val = parseFloat(el.value);
+    if (el.value !== "" && !isNaN(val) && !isNaN(min) && val < min) {
+      el.value = String(min);
+    }
+  }
+  document.addEventListener("input", function (e) {
+    const t = e.target;
+    if (t && t.matches && t.matches('input[type="number"]')) clampNumberInput(t);
+  }, true);
+  document.addEventListener("change", function (e) {
+    const t = e.target;
+    if (t && t.matches && t.matches('input[type="number"]')) clampNumberInput(t);
+  }, true);
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('input[type="number"]').forEach(clampNumberInput);
+  });
+})();

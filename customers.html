@@ -172,7 +172,6 @@
                         <div class="filter-title">فیلترهای مشتری</div>
                         <div class="section-subtitle">ترکیب چند معیار برای رسیدن به مشتری موردنظر.</div>
                     </div>
-                    <button class="btn btn-sm btn-light-panel" id="resetCustomerFilters" type="button">حذف همه</button>
                 </div>
                 <div class="row g-3">
                     <div class="col-md-3">
@@ -198,13 +197,35 @@
                         <div class="filter-section-label">محدوده</div>
                         <input id="cfArea" class="form-control" placeholder="مثلاً فرهنگ‌شهر"></div>
                     <div class="col-md-3">
-                        <div class="filter-section-label">حداقل متراژ</div>
-                        <input id="cfMinArea" type="number" class="form-control" placeholder="مثلاً ۸۰"></div>
+                        <div class="filter-section-label">متراژ</div>
+                        <div class="range-inputs">
+                            <input id="cfMinArea" type="number" min="0" class="form-control" placeholder="از">
+                            <input id="cfMaxArea" type="number" min="0" class="form-control" placeholder="تا">
+                        </div>
+                    </div>
                     <div class="col-md-3">
-                        <div class="filter-section-label">حداکثر متراژ</div>
-                        <input id="cfMaxArea" type="number" class="form-control" placeholder="مثلاً ۱۵۰"></div>
+                        <div class="filter-section-label">بودجه خرید (میلیارد)</div>
+                        <div class="range-inputs">
+                            <input id="cfBudgetBuyMin" type="number" min="0" step="0.1" class="form-control" placeholder="از">
+                            <input id="cfBudgetBuyMax" type="number" min="0" step="0.1" class="form-control" placeholder="تا">
+                        </div>
+                    </div>
                     <div class="col-md-3">
-                        <div class="filter-section-label">حداکثر خواب</div>
+                        <div class="filter-section-label">بودجه رهن (میلیون)</div>
+                        <div class="range-inputs">
+                            <input id="cfBudgetDepositMin" type="number" min="0" class="form-control" placeholder="از">
+                            <input id="cfBudgetDepositMax" type="number" min="0" class="form-control" placeholder="تا">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="filter-section-label">بودجه اجاره (میلیون)</div>
+                        <div class="range-inputs">
+                            <input id="cfBudgetRentMin" type="number" min="0" class="form-control" placeholder="از">
+                            <input id="cfBudgetRentMax" type="number" min="0" class="form-control" placeholder="تا">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="filter-section-label">تعداد خواب</div>
                         <select id="cfRooms" class="form-select">
                             <option value="">همه</option>
                             <option value="1">۱ خواب</option>
@@ -220,6 +241,10 @@
                             <option value="urgent">فوری</option>
                             <option value="closed">بسته‌شده</option>
                         </select></div>
+                </div>
+                <div class="filter-actions-row">
+                    <button type="button" class="btn btn-primary btn-sm" id="applyCustomerFilters"><i class="bi bi-funnel ms-1"></i> اعمال فیلتر</button>
+                    <button class="btn btn-sm btn-light-panel" id="resetCustomerFilters" type="button">حذف همه فیلترها</button>
                 </div>
             </div>
             <div class="filter-summary"><span class="filter-summary-label">فیلترهای فعال:</span><span
@@ -241,7 +266,7 @@
                 <option value="area">بیشترین متراژ</option>
             </select></div>
         <section class="customers-list" id="customersList">
-            <article class="customer-card" data-name="امیرحسین تقوی" data-phone="09123334455" data-city="تهران"
+            <article class="customer-card" data-name="امیرحسین تقوی" data-budget-buy="0" data-budget-deposit="900" data-budget-rent="0" data-phone="09123334455" data-city="تهران"
                      data-area-name="سعادت آباد" data-type="rent" data-property="آپارتمان" data-minarea="80"
                      data-maxarea="120" data-rooms="2" data-status="active">
                 <div class="customer-main">
@@ -270,7 +295,7 @@
                     <div class="matches-box"><span>فایل‌های پیشنهادی</span><strong>۱ فایل</strong></div>
                     <a href="customer-form.html" class="btn btn-light-panel btn-sm">مشاهده / ویرایش</a></div>
             </article>
-            <article class="customer-card" data-name="سارا مرادی" data-phone="09171234567" data-city="شیراز"
+            <article class="customer-card" data-name="سارا مرادی" data-budget-buy="8" data-budget-deposit="0" data-budget-rent="0" data-phone="09171234567" data-city="شیراز"
                      data-area-name="فرهنگ شهر" data-type="buy" data-property="آپارتمان" data-minarea="100"
                      data-maxarea="160" data-rooms="3" data-status="urgent">
                 <div class="customer-main">
@@ -301,7 +326,7 @@
                     <div class="matches-box"><span>فایل‌های پیشنهادی</span><strong>۴ فایل</strong></div>
                     <a href="customer-form.html" class="btn btn-light-panel btn-sm">مشاهده / ویرایش</a></div>
             </article>
-            <article class="customer-card" data-name="رضا کاظمی" data-phone="09351239876" data-city="شیراز"
+            <article class="customer-card" data-name="رضا کاظمی" data-budget-buy="0" data-budget-deposit="700" data-budget-rent="0" data-phone="09351239876" data-city="شیراز"
                      data-area-name="معالی آباد" data-type="mortgage" data-property="آپارتمان" data-minarea="70"
                      data-maxarea="110" data-rooms="2" data-status="active">
                 <div class="customer-main">
