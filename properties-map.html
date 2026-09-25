@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>نقشه املاک</title>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/bootstrap.icons.css">
+<link rel="stylesheet" href="assets/css/leaflet.css">
+<link rel="stylesheet" href="assets/css/panel.style.css">
+<script data-theme-preload>(function(){try{if(localStorage.getItem("panel-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}})();</script>
+</head>
+<body>
+<header class="panel-header navbar sticky-top p-0 shadow-sm">
+  <div class="panel-brand d-flex align-items-center px-3">
+    <div><strong>بنگاه املاک</strong><small class="d-block">مدیریت مشتری و ملک</small></div>
+  </div>
+  <div class="panel-topbar flex-grow-1 h-100 d-flex align-items-center justify-content-between px-3 px-md-4">
+    <div class="d-flex align-items-center gap-2">
+      <button class="mobile-menu-btn btn btn-light-panel" type="button" data-panel-sidebar-open aria-label="باز کردن منو"><i class="bi bi-list fs-5"></i></button>
+      <span class="page-title">نقشه املاک</span>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="تغییر تم" title="تغییر تم">
+        <i class="bi bi-moon-stars"></i>
+      </button>
+      <div class="dropdown notification-wrap">
+        <button class="notification-btn" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-label="اعلان‌ها">
+          <i class="bi bi-bell"></i><span class="notification-count">۳</span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-start notification-menu">
+          <div class="dropdown-header d-flex justify-content-between align-items-center">
+            <strong class="small">اعلان‌ها</strong><span class="badge bg-primary-subtle text-primary">۳ جدید</span>
+          </div>
+          <a class="notification-item justify-content-between" href="#">
+            <span class="notification-icon"><i class="bi bi-person-check"></i></span>
+            <span><strong>یک مشتری جدید ثبت شد</strong><small>مشتری «امیرحسین تقوی» به فهرست مشتری‌ها اضافه شده است.</small></span>
+          </a>
+          <a class="notification-item justify-content-between" href="rent-properties.html">
+            <span class="notification-icon"><i class="bi bi-building-check"></i></span>
+            <span><strong>فایل جدید برای پیگیری</strong><small>یک ملک جدید در محدوده فرهنگ‌شهر ثبت شده است.</small></span>
+          </a>
+          <div class="p-2 text-center border-top"><a class="small fw-bold" href="#">مشاهده همه اعلان‌ها</a></div>
+        </div>
+      </div>
+      <div class="user-menu">
+        <div class="text-end d-none d-sm-block"><div class="fw-bold small">نازنین یحیی پور</div><div class="text-muted" style="font-size:11px">کارشناس املاک</div></div>
+        <span class="user-avatar">ن</span>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="panel-shell">
+<aside id="panelSidebar" class="panel-sidebar">
+  <div class="offcanvas-header d-md-none p-3 border-bottom">
+    <strong>منوی پنل</strong>
+    <button type="button" class="btn-close" data-panel-sidebar-close></button>
+  </div>
+  <nav class="nav flex-column">
+    <div class="nav-section">مدیریت</div>
+    <a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i><span>داشبورد</span></a>
+    <a class="nav-link active" href="properties-map.html"><i class="bi bi-map"></i><span>نقشه املاک</span></a>
+    <div class="sidebar-group">
+      <button class="nav-link sidebar-group-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#saleSubmenu" aria-expanded="false">
+        <i class="bi bi-tag"></i><span>فروش</span><i class="bi bi-chevron-down sidebar-chevron"></i>
+      </button>
+      <div id="saleSubmenu" class="collapse sidebar-submenu">
+        <a class="nav-link sub-link" href="sale-properties.html"><i class="bi bi-buildings"></i><span>ملک‌های من</span></a>
+        <a class="nav-link sub-link" href="sale-property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a>
+      </div>
+    </div>
+    <div class="sidebar-group">
+      <button class="nav-link sidebar-group-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#rentSubmenu" aria-expanded="false">
+        <i class="bi bi-house-door"></i><span>رهن و اجاره</span><i class="bi bi-chevron-down sidebar-chevron"></i>
+      </button>
+      <div id="rentSubmenu" class="collapse sidebar-submenu">
+        <a class="nav-link sub-link" href="rent-properties.html"><i class="bi bi-buildings"></i><span>ملک‌های من</span></a>
+        <a class="nav-link sub-link" href="rent-property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a>
+      </div>
+    </div>
+    <a class="nav-link" href="customers.html"><i class="bi bi-people"></i><span>مشتری‌ها</span></a>
+    <a class="nav-link" href="customer-form.html"><i class="bi bi-person-plus"></i><span>ثبت مشتری</span></a>
+    <a class="nav-link" href="account.html"><i class="bi bi-person-circle"></i><span>حساب کاربری</span></a>
+    <div class="nav-section mt-2">حساب</div>
+    <a class="nav-link logout" href="#"><i class="bi bi-box-arrow-right"></i><span>خروج از حساب</span></a>
+  </nav>
+</aside>
+<div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-md-none" style="display:none;z-index:1010;"></div>
+<main class="panel-main">
+  <div class="page-heading">
+    <div>
+      <h1>نقشه املاک</h1>
+      <p>تمامی ملک‌های دارای مختصات روی نقشه نمایش داده می‌شوند. روی برچسب قیمت کلیک کنید تا جزئیات را ببینید.</p>
+    </div>
+    <div class="d-flex flex-wrap gap-2">
+      <a href="sale-property-form.html" class="btn btn-light-panel"><i class="bi bi-plus-lg ms-1"></i> ثبت فروش</a>
+      <a href="rent-property-form.html" class="btn btn-primary"><i class="bi bi-plus-lg ms-1"></i> ثبت رهن و اجاره</a>
+    </div>
+  </div>
+
+  <section class="card-panel pro-search-card mb-3">
+    <div class="pro-search-main">
+      <div class="quick-filter-row map-filter-row">
+        <button type="button" class="search-chip active" data-map-filter="all">همه</button>
+        <button type="button" class="search-chip" data-map-filter="sale"><i class="bi bi-tag ms-1"></i>فروش</button>
+        <button type="button" class="search-chip" data-map-filter="rent"><i class="bi bi-house-check ms-1"></i>رهن و اجاره</button>
+        <button type="button" class="search-chip" data-map-filter="apartment">آپارتمان</button>
+        <button type="button" class="search-chip" data-map-filter="villa">ویلایی</button>
+        <button type="button" class="search-chip" data-map-filter="land">زمین</button>
+        <span class="search-results-meta me-auto" id="mapResultsMeta">۰ ملک روی نقشه</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="card-panel map-page-card">
+    <div class="map-page-toolbar d-flex flex-wrap align-items-center gap-2">
+      <button type="button" class="btn btn-light-panel btn-sm" id="btnFitBounds"><i class="bi bi-arrows-fullscreen ms-1"></i> نمایش همه</button>
+      <button type="button" class="btn btn-light-panel btn-sm" id="btnLocateMeMap"><i class="bi bi-crosshair ms-1"></i> موقعیت من</button>
+      <span class="text-muted small d-none d-md-inline">برای جزئیات روی برچسب قیمت کلیک کنید</span>
+    </div>
+    <div id="propertiesMap" class="properties-map" aria-label="نقشه املاک"></div>
+  </div>
+</main>
+</div>
+<script src="assets/js/bootstrap.bundle.js"></script>
+<script src="assets/js/leaflet.js"></script>
+<script src="assets/js/panel.js"></script>
+<script src="assets/js/properties-map.js"></script>
+</body>
+</html>

@@ -152,3 +152,15 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('input[type="number"]').forEach(clampNumberInput);
   });
 })();
+
+
+/* Allow decimal values on all number inputs (HTML5 step default is 1 = integer only) */
+(function () {
+  function allowDecimals(el) {
+    if (!el || el.type !== "number") return;
+    if (!el.hasAttribute("step")) el.setAttribute("step", "any");
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('input[type="number"]').forEach(allowDecimals);
+  });
+})();

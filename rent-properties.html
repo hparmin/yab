@@ -69,6 +69,9 @@
     <a class="nav-link" href="dashboard.html">
       <i class="bi bi-speedometer2"></i><span>داشبورد</span>
     </a>
+    <a class="nav-link" href="properties-map.html">
+      <i class="bi bi-map"></i><span>نقشه املاک</span>
+    </a>
 
     <div class="sidebar-group">
       <button class="nav-link sidebar-group-toggle" type="button"
@@ -159,12 +162,12 @@
    <div class="col-md-3"><div class="filter-section-label">شهر</div><input class="form-control" id="filterCity" placeholder="مثلاً شیراز"></div>
    <div class="col-md-3"><div class="filter-section-label">محدوده</div><input class="form-control" id="filterDistrict" placeholder="مثلاً فرهنگ‌شهر"></div>
    <div class="col-md-3"><div class="filter-section-label">نام مالک</div><input class="form-control" id="filterOwner" placeholder="نام و نام خانوادگی"></div>
-   <div class="col-md-3"><div class="filter-section-label">متراژ</div><div class="range-inputs"><input type="number" min="0" class="form-control" id="filterAreaMin" placeholder="از"><input type="number" min="0" class="form-control" id="filterAreaMax" placeholder="تا"></div></div>
-   <div class="col-md-3"><div class="filter-section-label">رهن (میلیون)</div><div class="range-inputs"><input type="number" min="0" class="form-control" id="filterDepositMin" placeholder="از"><input type="number" min="0" class="form-control" id="filterDepositMax" placeholder="تا"></div></div>
-   <div class="col-md-3"><div class="filter-section-label">اجاره (میلیون)</div><div class="range-inputs"><input type="number" min="0" class="form-control" id="filterRentMin" placeholder="از"><input type="number" min="0" class="form-control" id="filterRentMax" placeholder="تا"></div></div>
+   <div class="col-md-3"><div class="filter-section-label">متراژ</div><div class="range-inputs"><input type="number" step="any" min="0" class="form-control" id="filterAreaMin" placeholder="از"><input type="number" step="any" min="0" class="form-control" id="filterAreaMax" placeholder="تا"></div></div>
+   <div class="col-md-3"><div class="filter-section-label">رهن (میلیون)</div><div class="range-inputs"><input type="number" step="any" min="0" class="form-control" id="filterDepositMin" placeholder="از"><input type="number" step="any" min="0" class="form-control" id="filterDepositMax" placeholder="تا"></div></div>
+   <div class="col-md-3"><div class="filter-section-label">اجاره (میلیون)</div><div class="range-inputs"><input type="number" step="any" min="0" class="form-control" id="filterRentMin" placeholder="از"><input type="number" step="any" min="0" class="form-control" id="filterRentMax" placeholder="تا"></div></div>
    <div class="col-md-3"><div class="filter-section-label">تعداد خواب</div><select class="form-select" id="filterRooms"><option value="">همه</option><option value="1">۱ خواب</option><option value="2">۲ خواب</option><option value="3">۳ خواب</option><option value="4">۴ خواب و بیشتر</option></select></div>
    <div class="col-md-3"><div class="filter-section-label">طبقه</div><input class="form-control" id="filterFloor" placeholder="مثلاً ۳"></div>
-   <div class="col-md-3"><div class="filter-section-label">سال ساخت</div><div class="range-inputs"><input type="number" min="0" class="form-control" id="filterYearMin" placeholder="از"><input type="number" min="0" class="form-control" id="filterYearMax" placeholder="تا"></div></div>
+   <div class="col-md-3"><div class="filter-section-label">سال ساخت</div><div class="range-inputs"><input type="number" step="any" min="0" class="form-control" id="filterYearMin" placeholder="از"><input type="number" step="any" min="0" class="form-control" id="filterYearMax" placeholder="تا"></div></div>
    <div class="col-md-3"><div class="filter-section-label">وضعیت</div><select class="form-select" id="filterStatus"><option value="">همه</option><option value="active">فعال</option><option value="pending">در انتظار</option></select></div>
    <div class="col-md-3"><div class="filter-section-label">امکانات</div><div class="toggle-pills">
     <span class="toggle-pill"><input id="amenityParking" type="checkbox"><label for="amenityParking"><i class="bi bi-p-circle ms-1"></i>پارکینگ</label></span>
