@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ثبت معامله</title>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/bootstrap.icons.css">
+<link rel="stylesheet" href="assets/css/panel.style.css">
+<script data-theme-preload>(function(){try{if(localStorage.getItem("panel-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}})();</script>
+</head>
+<body>
+<header class="panel-header navbar sticky-top p-0 shadow-sm">
+  <div class="panel-brand d-flex align-items-center px-3">
+    <div><strong>بنگاه املاک</strong><small class="d-block">مدیریت مشتری و ملک</small></div>
+  </div>
+  <div class="panel-topbar flex-grow-1 h-100 d-flex align-items-center justify-content-between px-3 px-md-4">
+    <div class="d-flex align-items-center gap-2">
+      <button class="mobile-menu-btn btn btn-light-panel" type="button" data-panel-sidebar-open aria-label="باز کردن منو"><i class="bi bi-list fs-5"></i></button>
+      <span class="page-title">ثبت معامله</span>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="تغییر تم" title="تغییر تم"><i class="bi bi-moon-stars"></i></button>
+      <div class="user-menu">
+        <div class="text-end d-none d-sm-block"><div class="fw-bold small">نازنین یحیی پور</div><div class="text-muted" style="font-size:11px">کارشناس املاک</div></div>
+        <span class="user-avatar">ن</span>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="panel-shell">
+<aside id="panelSidebar" class="panel-sidebar">
+  <div class="offcanvas-header d-md-none p-3 border-bottom">
+    <strong>منوی پنل</strong>
+    <button type="button" class="btn-close" data-panel-sidebar-close></button>
+  </div>
+  <nav class="nav flex-column">
+    <div class="nav-section">مدیریت</div>
+    <a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i><span>داشبورد</span></a>
+    <a class="nav-link" href="properties-map.html"><i class="bi bi-map"></i><span>نقشه املاک</span></a>
+    <div class="sidebar-group">
+      <button class="nav-link sidebar-group-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#saleSubmenu" aria-expanded="false">
+        <i class="bi bi-tag"></i><span>فروش</span><i class="bi bi-chevron-down sidebar-chevron"></i>
+      </button>
+      <div id="saleSubmenu" class="collapse sidebar-submenu">
+        <a class="nav-link sub-link" href="sale-properties.html"><i class="bi bi-buildings"></i><span>ملک‌های من</span></a>
+        <a class="nav-link sub-link" href="sale-property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a>
+      </div>
+    </div>
+    <div class="sidebar-group">
+      <button class="nav-link sidebar-group-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#rentSubmenu" aria-expanded="false">
+        <i class="bi bi-house-door"></i><span>رهن و اجاره</span><i class="bi bi-chevron-down sidebar-chevron"></i>
+      </button>
+      <div id="rentSubmenu" class="collapse sidebar-submenu">
+        <a class="nav-link sub-link" href="rent-properties.html"><i class="bi bi-buildings"></i><span>ملک‌های من</span></a>
+        <a class="nav-link sub-link" href="rent-property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a>
+      </div>
+    </div>
+    <a class="nav-link" href="customers.html"><i class="bi bi-people"></i><span>مشتری‌ها</span></a>
+    <a class="nav-link" href="customer-form.html"><i class="bi bi-person-plus"></i><span>ثبت مشتری</span></a>
+    <a class="nav-link" href="deals.html"><i class="bi bi-handshake"></i><span>معاملات</span></a>
+    <a class="nav-link active" href="deal-form.html"><i class="bi bi-journal-plus"></i><span>ثبت معامله</span></a>
+    <a class="nav-link" href="account.html"><i class="bi bi-person-circle"></i><span>حساب کاربری</span></a>
+    <div class="nav-section mt-2">حساب</div>
+    <a class="nav-link logout" href="#"><i class="bi bi-box-arrow-right"></i><span>خروج از حساب</span></a>
+  </nav>
+</aside>
+<div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-md-none" style="display:none;z-index:1010;"></div>
+<main class="panel-main">
+  <div class="page-heading">
+    <div>
+      <h1>ثبت معامله</h1>
+      <p>اطلاعات معامله، طرفین، کمیسیون کل و سهم هر مشاور را وارد کنید.</p>
+    </div>
+    <a href="deals.html" class="btn btn-light-panel">بازگشت به فهرست</a>
+  </div>
+
+  <div class="card-panel">
+    <div class="card-body">
+      <form id="dealForm">
+        <div class="form-section light-gray-form-section">
+          <div class="form-section-title"><i class="bi bi-info-circle"></i> اطلاعات اصلی معامله</div>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label required">نوع معامله</label>
+              <select class="form-select" id="dealType" name="deal_type" required>
+                <option value="sale">فروش</option>
+                <option value="rent">رهن و اجاره</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label required">تاریخ معامله</label>
+              <input type="text" class="form-control" name="deal_date" placeholder="مثلاً ۱۴۰۴/۰۶/۱۲" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">شماره قرارداد</label>
+              <input type="text" class="form-control" name="contract_no" placeholder="اختیاری">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label required">کد / ملک</label>
+              <select class="form-select" name="property_id" required>
+                <option value="">انتخاب ملک</option>
+                <option value="1024">۱۰۲۴ — آپارتمان فرهنگ‌شهر (فروش)</option>
+                <option value="1023">۱۰۲۳ — آپارتمان معالی‌آباد (رهن)</option>
+                <option value="1022">۱۰۲۲ — زمین صدرا (فروش)</option>
+                <option value="1021">۱۰۲۱ — ویلایی قصرالدشت (رهن)</option>
+                <option value="1020">۱۰۲۰ — آپارتمان فرهنگ‌شهر (رهن)</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label required">مشتری</label>
+              <select class="form-select" name="customer_id" required>
+                <option value="">انتخاب مشتری</option>
+                <option>سارا مرادی</option>
+                <option>امیرحسین تقوی</option>
+                <option>رضا کاظمی</option>
+                <option>سایر (دستی)</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">طرف معامله بنگاه</label>
+              <select class="form-select" name="agency_side">
+                <option value="both">هر دو طرف</option>
+                <option value="buyer">سمت خریدار / مستأجر</option>
+                <option value="seller">سمت فروشنده / موجر</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section light-gray-form-section">
+          <div class="form-section-title"><i class="bi bi-cash-stack"></i> مبالغ معامله</div>
+          <div class="row g-3">
+            <div class="col-md-4 deal-sale-field">
+              <label class="form-label required">مبلغ فروش (میلیارد تومان)</label>
+              <input type="number" step="any" min="0" class="form-control" name="sale_amount" placeholder="مثلاً ۶.۸">
+            </div>
+            <div class="col-md-4 deal-rent-field d-none">
+              <label class="form-label">مبلغ رهن (میلیون تومان)</label>
+              <input type="number" step="any" min="0" class="form-control" name="deposit_amount" placeholder="مثلاً ۶۰۰">
+            </div>
+            <div class="col-md-4 deal-rent-field d-none">
+              <label class="form-label">مبلغ اجاره ماهانه (میلیون)</label>
+              <input type="number" step="any" min="0" class="form-control" name="rent_amount" placeholder="مثلاً ۲۲">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label required">کمیسیون کل (میلیون تومان)</label>
+              <input type="number" step="any" min="0" class="form-control" id="totalCommission" name="total_commission" placeholder="مثلاً ۲۵۰" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">نحوه محاسبه کمیسیون</label>
+              <select class="form-select" name="commission_calc">
+                <option value="fixed">مبلغ ثابت</option>
+                <option value="percent">درصد از معامله</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label required">وضعیت پرداخت کمیسیون</label>
+              <select class="form-select" name="payment_status" required>
+                <option value="paid">تسویه‌شده</option>
+                <option value="partial">بخشی پرداخت‌شده</option>
+                <option value="pending">در انتظار</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">مبلغ پرداخت‌شده تا الان (میلیون)</label>
+              <input type="number" step="any" min="0" class="form-control" name="paid_amount" placeholder="اگر بخشی پرداخت شده">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">تاریخ تسویه نهایی</label>
+              <input type="text" class="form-control" name="settlement_date" placeholder="مثلاً ۱۴۰۴/۰۷/۱۵">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section light-gray-form-section">
+          <div class="form-section-title d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <span><i class="bi bi-people"></i> مشاورین و سهم کمیسیون</span>
+            <button type="button" class="btn btn-sm btn-light-panel" id="addAgentRow"><i class="bi bi-plus-lg ms-1"></i> افزودن مشاور</button>
+          </div>
+          <p class="text-muted small mb-3">هر مشاوری که در این معامله نقش داشته سهم کمیسیون خود را وارد کنید. جمع سهم‌ها باید با کمیسیون کل برابر باشد.</p>
+          <div id="agentRows">
+            <div class="agent-share-row row g-2 align-items-end mb-2">
+              <div class="col-md-5">
+                <label class="form-label">نام مشاور</label>
+                <select class="form-select agent-name" name="agents[0][name]">
+                  <option value="">انتخاب کنید</option>
+                  <option selected>نازنین یحیی پور</option>
+                  <option>آرمین حاجی پور</option>
+                  <option>مهدی ایرانمنش</option>
+                  <option>سایر</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">نقش</label>
+                <select class="form-select" name="agents[0][role]">
+                  <option>معرف</option>
+                  <option>پیگیری‌کننده</option>
+                  <option>بستن قرارداد</option>
+                  <option>همکار</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">سهم (میلیون تومان)</label>
+                <input type="number" step="any" min="0" class="form-control agent-share" name="agents[0][share]" placeholder="مثلاً ۱۰۰">
+              </div>
+              <div class="col-md-1">
+                <button type="button" class="btn btn-light-panel w-100 remove-agent-row" title="حذف" disabled><i class="bi bi-trash"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="deal-share-summary mt-3">
+            <span>جمع سهم مشاورین: <strong id="sharesSum">۰</strong> میلیون</span>
+            <span class="mx-2">|</span>
+            <span>کمیسیون کل: <strong id="commissionRef">۰</strong> میلیون</span>
+            <span class="mx-2">|</span>
+            <span id="shareBalance" class="share-balance ok">متوازن</span>
+          </div>
+        </div>
+
+        <div class="form-section light-gray-form-section">
+          <div class="form-section-title"><i class="bi bi-chat-left-text"></i> توضیحات</div>
+          <div class="row g-3">
+            <div class="col-12">
+              <label class="form-label">توضیحات معامله</label>
+              <textarea class="form-control" name="notes" rows="3" placeholder="شرایط خاص، توافقات جانبی، نحوه پرداخت و..."></textarea>
+            </div>
+            <div class="col-12">
+              <label class="form-label">یادداشت داخلی</label>
+              <textarea class="form-control" name="internal_notes" rows="2" placeholder="فقط برای تیم بنگاه قابل مشاهده"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end gap-2 flex-wrap">
+          <a href="deals.html" class="btn btn-light-panel px-4">انصراف</a>
+          <button class="btn btn-primary px-5" type="submit"><i class="bi bi-check2-circle ms-1"></i> ذخیره معامله</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+</div>
+<script src="assets/js/bootstrap.bundle.js"></script>
+<script src="assets/js/panel.js"></script>
+<script src="assets/js/deals.js"></script>
+</body>
+</html>

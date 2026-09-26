@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>معاملات</title>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/bootstrap.icons.css">
+<link rel="stylesheet" href="assets/css/panel.style.css">
+<script data-theme-preload>(function(){try{if(localStorage.getItem("panel-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}})();</script>
+</head>
+<body>
+<header class="panel-header navbar sticky-top p-0 shadow-sm">
+  <div class="panel-brand d-flex align-items-center px-3">
+    <div><strong>بنگاه املاک</strong><small class="d-block">مدیریت مشتری و ملک</small></div>
+  </div>
+  <div class="panel-topbar flex-grow-1 h-100 d-flex align-items-center justify-content-between px-3 px-md-4">
+    <div class="d-flex align-items-center gap-2">
+      <button class="mobile-menu-btn btn btn-light-panel" type="button" data-panel-sidebar-open aria-label="باز کردن منو"><i class="bi bi-list fs-5"></i></button>
+      <span class="page-title">معاملات</span>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="تغییر تم" title="تغییر تم"><i class="bi bi-moon-stars"></i></button>
+      <div class="user-menu">
+        <div class="text-end d-none d-sm-block"><div class="fw-bold small">نازنین یحیی پور</div><div class="text-muted" style="font-size:11px">کارشناس املاک</div></div>
+        <span class="user-avatar">ن</span>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="panel-shell">
+<aside id="panelSidebar" class="panel-sidebar">
+  <div class="offcanvas-header d-md-none p-3 border-bottom">
+    <strong>منوی پنل</strong>
+    <button type="button" class="btn-close" data-panel-sidebar-close></button>
+  </div>
+  <nav class="nav flex-column">
+    <div class="nav-section">مدیریت</div>
+    <a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i><span>داشبورد</span></a>
+    <a class="nav-link" href="properties-map.html"><i class="bi bi-map"></i><span>نقشه املاک</span></a>
+    <div class="sidebar-group">
+      <button class="nav-link sidebar-group-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#saleSubmenu" aria-expanded="false">
+        <i class="bi bi-tag"></i><span>فروش</span><i class="bi bi-chevron-down sidebar-chevron"></i>
+      </button>
+      <div id="saleSubmenu" class="collapse sidebar-submenu">
+        <a class="nav-link sub-link" href="sale-properties.html"><i class="bi bi-buildings"></i><span>ملک‌های من</span></a>
+        <a class="nav-link sub-link" href="sale-property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a>
+      </div>
+    </div>
+    <div class="sidebar-group">
+      <button class="nav-link sidebar-group-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#rentSubmenu" aria-expanded="false">
+        <i class="bi bi-house-door"></i><span>رهن و اجاره</span><i class="bi bi-chevron-down sidebar-chevron"></i>
+      </button>
+      <div id="rentSubmenu" class="collapse sidebar-submenu">
+        <a class="nav-link sub-link" href="rent-properties.html"><i class="bi bi-buildings"></i><span>ملک‌های من</span></a>
+        <a class="nav-link sub-link" href="rent-property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a>
+      </div>
+    </div>
+    <a class="nav-link" href="customers.html"><i class="bi bi-people"></i><span>مشتری‌ها</span></a>
+    <a class="nav-link" href="customer-form.html"><i class="bi bi-person-plus"></i><span>ثبت مشتری</span></a>
+    <a class="nav-link active" href="deals.html"><i class="bi bi-handshake"></i><span>معاملات</span></a>
+    <a class="nav-link" href="deal-form.html"><i class="bi bi-journal-plus"></i><span>ثبت معامله</span></a>
+    <a class="nav-link" href="account.html"><i class="bi bi-person-circle"></i><span>حساب کاربری</span></a>
+    <div class="nav-section mt-2">حساب</div>
+    <a class="nav-link logout" href="#"><i class="bi bi-box-arrow-right"></i><span>خروج از حساب</span></a>
+  </nav>
+</aside>
+<div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-md-none" style="display:none;z-index:1010;"></div>
+<main class="panel-main">
+  <div class="page-heading">
+    <div>
+      <h1>معاملات</h1>
+      <p>ثبت و پیگیری معاملات انجام‌شده، کمیسیون کل و سهم هر مشاور.</p>
+    </div>
+    <a href="deal-form.html" class="btn btn-primary px-4"><i class="bi bi-plus-lg ms-1"></i> ثبت معامله جدید</a>
+  </div>
+
+  <div class="row g-3 mb-3">
+    <div class="col-md-3 col-6">
+      <div class="card-panel deal-stat-card">
+        <div class="deal-stat-label">کل معاملات</div>
+        <div class="deal-stat-value" id="statTotalDeals">۳</div>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="card-panel deal-stat-card">
+        <div class="deal-stat-label">کمیسیون دریافتی</div>
+        <div class="deal-stat-value text-success" id="statTotalCommission">۴۱۰ م</div>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="card-panel deal-stat-card">
+        <div class="deal-stat-label">در انتظار تسویه</div>
+        <div class="deal-stat-value text-warning" id="statPending">۱</div>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="card-panel deal-stat-card">
+        <div class="deal-stat-label">این ماه</div>
+        <div class="deal-stat-value" id="statThisMonth">۲</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="card-panel pro-search-card mb-3" id="dealSearchPanel">
+    <div class="pro-search-main">
+      <div class="pro-search-wrap">
+        <i class="bi bi-search"></i>
+        <input id="dealSearch" class="form-control pro-search-input" type="search" placeholder="کد معامله، ملک، مشتری یا نام مشاور..." autocomplete="off">
+        <button id="dealSearchBtn" class="btn btn-primary search-submit" type="button"><i class="bi bi-search ms-1"></i> جستجو</button>
+      </div>
+      <div class="quick-filter-row">
+        <button class="search-chip active" data-deal-quick="all">همه</button>
+        <button class="search-chip" data-deal-quick="sale"><i class="bi bi-tag ms-1"></i>فروش</button>
+        <button class="search-chip" data-deal-quick="rent"><i class="bi bi-house-check ms-1"></i>رهن و اجاره</button>
+        <button class="search-chip" data-deal-quick="paid">تسویه‌شده</button>
+        <button class="search-chip" data-deal-quick="pending">در انتظار تسویه</button>
+        <button class="btn btn-link clear-search text-decoration-none me-auto p-1" id="clearDealSearch" type="button"><i class="bi bi-arrow-counterclockwise ms-1"></i>پاک کردن</button>
+      </div>
+    </div>
+    <div class="advanced-search collapse" id="advancedDealFilters">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <div class="filter-title">فیلترهای معامله</div>
+          <div class="section-subtitle">بر اساس نوع، وضعیت پرداخت و مشاور فیلتر کنید.</div>
+        </div>
+      </div>
+      <div class="row g-3">
+        <div class="col-md-3">
+          <div class="filter-section-label">نوع معامله</div>
+          <select id="dfType" class="form-select">
+            <option value="">همه</option>
+            <option value="sale">فروش</option>
+            <option value="rent">رهن و اجاره</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <div class="filter-section-label">وضعیت پرداخت</div>
+          <select id="dfStatus" class="form-select">
+            <option value="">همه</option>
+            <option value="paid">تسویه‌شده</option>
+            <option value="partial">بخشی پرداخت‌شده</option>
+            <option value="pending">در انتظار</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <div class="filter-section-label">مشاور</div>
+          <select id="dfAgent" class="form-select">
+            <option value="">همه</option>
+            <option>نازنین یحیی پور</option>
+            <option>آرمین حاجی پور</option>
+            <option>مهدی ایرانمنش</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <div class="filter-section-label">کمیسیون (میلیون)</div>
+          <div class="range-inputs">
+            <input id="dfCommMin" type="number" step="any" min="0" class="form-control" placeholder="از">
+            <input id="dfCommMax" type="number" step="any" min="0" class="form-control" placeholder="تا">
+          </div>
+        </div>
+      </div>
+      <div class="filter-actions-row">
+        <button type="button" class="btn btn-primary btn-sm" id="applyDealFilters"><i class="bi bi-funnel ms-1"></i> اعمال فیلتر</button>
+        <button type="button" class="btn btn-sm btn-light-panel" id="resetDealFilters">حذف همه فیلترها</button>
+      </div>
+    </div>
+    <div class="filter-summary">
+      <span class="filter-summary-label">فیلترهای فعال:</span>
+      <span id="dealActiveFilters" class="d-flex flex-wrap gap-1"><span class="active-filter">بدون فیلتر</span></span>
+      <button class="btn btn-link clear-search text-decoration-none me-auto p-0" type="button" data-bs-toggle="collapse" data-bs-target="#advancedDealFilters"><i class="bi bi-sliders ms-1"></i>فیلتر پیشرفته</button>
+    </div>
+  </section>
+
+  <div class="search-results-meta mb-2" id="dealResultsMeta"></div>
+
+  <div class="deals-list" id="dealsList">
+    <article class="deal-card" data-code="D-1404-01" data-type="sale" data-status="paid" data-commission="250" data-agents="نازنین یحیی پور,آرمین حاجی پور,مهدی ایرانمنش" data-customer="سارا مرادی" data-property="۱۰۲۴">
+      <div class="deal-card-main">
+        <div class="deal-card-top">
+          <div>
+            <div class="deal-code">D-1404-01</div>
+            <div class="deal-title">فروش آپارتمان فرهنگ‌شهر — کد ۱۰۲۴</div>
+          </div>
+          <div class="deal-tags">
+            <span class="badge-soft badge-sale">فروش</span>
+            <span class="badge-soft badge-rent">تسویه‌شده</span>
+          </div>
+        </div>
+        <div class="deal-meta-grid">
+          <div><span class="deal-meta-label">مشتری</span><strong>سارا مرادی</strong></div>
+          <div><span class="deal-meta-label">تاریخ</span><strong>۱۴۰۴/۰۶/۱۲</strong></div>
+          <div><span class="deal-meta-label">مبلغ معامله</span><strong>۶.۸ میلیارد</strong></div>
+          <div><span class="deal-meta-label">کمیسیون کل</span><strong class="text-success">۲۵۰ میلیون</strong></div>
+        </div>
+        <div class="deal-agents">
+          <span class="deal-meta-label">مشاورین و سهم کمیسیون</span>
+          <div class="deal-agent-chips">
+            <span class="deal-agent-chip">نازنین یحیی پور <b>۱۰۰ م</b></span>
+            <span class="deal-agent-chip">آرمین حاجی پور <b>۸۰ م</b></span>
+            <span class="deal-agent-chip">مهدی ایرانمنش <b>۷۰ م</b></span>
+          </div>
+        </div>
+      </div>
+      <div class="deal-card-actions">
+        <a href="deal-form.html" class="btn btn-sm btn-light-panel">مشاهده / ویرایش</a>
+      </div>
+    </article>
+
+    <article class="deal-card" data-code="D-1404-02" data-type="rent" data-status="partial" data-commission="45" data-agents="نازنین یحیی پور" data-customer="امیرحسین تقوی" data-property="۱۰۲۳">
+      <div class="deal-card-main">
+        <div class="deal-card-top">
+          <div>
+            <div class="deal-code">D-1404-02</div>
+            <div class="deal-title">رهن آپارتمان معالی‌آباد — کد ۱۰۲۳</div>
+          </div>
+          <div class="deal-tags">
+            <span class="badge-soft badge-rent">رهن و اجاره</span>
+            <span class="badge-soft badge-muted">بخشی پرداخت‌شده</span>
+          </div>
+        </div>
+        <div class="deal-meta-grid">
+          <div><span class="deal-meta-label">مشتری</span><strong>امیرحسین تقوی</strong></div>
+          <div><span class="deal-meta-label">تاریخ</span><strong>۱۴۰۴/۰۶/۲۰</strong></div>
+          <div><span class="deal-meta-label">رهن / اجاره</span><strong>۶۰۰ / ۲۲ میلیون</strong></div>
+          <div><span class="deal-meta-label">کمیسیون کل</span><strong class="text-success">۴۵ میلیون</strong></div>
+        </div>
+        <div class="deal-agents">
+          <span class="deal-meta-label">مشاورین و سهم کمیسیون</span>
+          <div class="deal-agent-chips">
+            <span class="deal-agent-chip">نازنین یحیی پور <b>۴۵ م</b></span>
+          </div>
+        </div>
+      </div>
+      <div class="deal-card-actions">
+        <a href="deal-form.html" class="btn btn-sm btn-light-panel">مشاهده / ویرایش</a>
+      </div>
+    </article>
+
+    <article class="deal-card" data-code="D-1404-03" data-type="sale" data-status="pending" data-commission="115" data-agents="آرمین حاجی پور,مهدی ایرانمنش" data-customer="رضا کاظمی" data-property="۱۰۲۲">
+      <div class="deal-card-main">
+        <div class="deal-card-top">
+          <div>
+            <div class="deal-code">D-1404-03</div>
+            <div class="deal-title">فروش زمین صدرا — کد ۱۰۲۲</div>
+          </div>
+          <div class="deal-tags">
+            <span class="badge-soft badge-sale">فروش</span>
+            <span class="badge-soft badge-muted">در انتظار تسویه</span>
+          </div>
+        </div>
+        <div class="deal-meta-grid">
+          <div><span class="deal-meta-label">مشتری</span><strong>رضا کاظمی</strong></div>
+          <div><span class="deal-meta-label">تاریخ</span><strong>۱۴۰۴/۰۷/۰۱</strong></div>
+          <div><span class="deal-meta-label">مبلغ معامله</span><strong>۹.۲ میلیارد</strong></div>
+          <div><span class="deal-meta-label">کمیسیون کل</span><strong class="text-success">۱۱۵ میلیون</strong></div>
+        </div>
+        <div class="deal-agents">
+          <span class="deal-meta-label">مشاورین و سهم کمیسیون</span>
+          <div class="deal-agent-chips">
+            <span class="deal-agent-chip">آرمین حاجی پور <b>۶۵ م</b></span>
+            <span class="deal-agent-chip">مهدی ایرانمنش <b>۵۰ م</b></span>
+          </div>
+        </div>
+      </div>
+      <div class="deal-card-actions">
+        <a href="deal-form.html" class="btn btn-sm btn-light-panel">مشاهده / ویرایش</a>
+      </div>
+    </article>
+  </div>
+
+  <div id="dealEmpty" class="notification-empty d-none card-panel mt-3">
+    <i class="bi bi-search fs-3 d-block mb-2"></i>
+    معامله‌ای با این معیارها پیدا نشد.
+    <div class="mt-2"><button class="btn btn-sm btn-light-panel" id="emptyClearDeal">پاک کردن فیلترها</button></div>
+  </div>
+</main>
+</div>
+<script src="assets/js/bootstrap.bundle.js"></script>
+<script src="assets/js/panel.js"></script>
+<script src="assets/js/deals.js"></script>
+</body>
+</html>
