@@ -1549,3 +1549,44 @@ html[data-theme="dark"] .deal-share-summary {
 html[data-theme="dark"] .deal-stat-value {
   color: var(--panel-text);
 }
+
+/* ========== Admin access (نقش و محدوده قیمت) ========== */
+.access-table .form-select-sm,
+.access-table .form-control-sm {
+  min-height: 36px;
+  font-size: 12px;
+}
+.access-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+  max-width: min(90vw, 420px);
+  text-align: center;
+}
+.access-toast.ok {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+.access-toast.err {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+html[data-theme="dark"] .access-toast.ok {
+  background: #14532d;
+  color: #86efac;
+  border-color: #166534;
+}
+html[data-theme="dark"] .access-toast.err {
+  background: #7f1d1d;
+  color: #fecaca;
+  border-color: #991b1b;
+}

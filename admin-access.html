@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مدیریت دسترسی کاربران</title>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/bootstrap.icons.css">
+<link rel="stylesheet" href="assets/css/panel.style.css">
+<script data-theme-preload>(function(){try{if(localStorage.getItem("panel-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}})();</script>
+</head>
+<body>
+<header class="panel-header navbar sticky-top p-0 shadow-sm">
+  <div class="panel-brand d-flex align-items-center px-3">
+    <div><strong>بنگاه املاک</strong><small class="d-block">مدیریت مشتری و ملک</small></div>
+  </div>
+  <div class="panel-topbar flex-grow-1 h-100 d-flex align-items-center justify-content-between px-3 px-md-4">
+    <div class="d-flex align-items-center gap-2">
+      <button class="mobile-menu-btn btn btn-light-panel" type="button" data-panel-sidebar-open aria-label="باز کردن منو"><i class="bi bi-list fs-5"></i></button>
+      <span class="page-title">مدیریت دسترسی</span>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="تغییر تم" title="تغییر تم"><i class="bi bi-moon-stars"></i></button>
+      <div class="user-menu">
+        <div class="text-end d-none d-sm-block"><div class="fw-bold small">مدیر سیستم</div><div class="text-muted" style="font-size:11px">ادمین</div></div>
+        <span class="user-avatar">م</span>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="panel-shell">
+<aside id="panelSidebar" class="panel-sidebar">
+  <div class="offcanvas-header d-md-none p-3 border-bottom">
+    <strong>منوی پنل</strong>
+    <button type="button" class="btn-close" data-panel-sidebar-close></button>
+  </div>
+  <nav class="nav flex-column">
+    <div class="nav-section">مدیریت</div>
+    <a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i><span>داشبورد</span></a>
+    <a class="nav-link" href="properties-map.html"><i class="bi bi-map"></i><span>نقشه املاک</span></a>
+    <div class="sidebar-group">
+      <button class="nav-link sidebar-group-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#saleSubmenu" aria-expanded="false">
+        <i class="bi bi-tag"></i><span>فروش</span><i class="bi bi-chevron-down sidebar-chevron"></i>
+      </button>
+      <div id="saleSubmenu" class="collapse sidebar-submenu">
+        <a class="nav-link sub-link" href="sale-properties.html"><i class="bi bi-buildings"></i><span>ملک‌های من</span></a>
+        <a class="nav-link sub-link" href="sale-property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a>
+      </div>
+    </div>
+    <div class="sidebar-group">
+      <button class="nav-link sidebar-group-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#rentSubmenu" aria-expanded="false">
+        <i class="bi bi-house-door"></i><span>رهن و اجاره</span><i class="bi bi-chevron-down sidebar-chevron"></i>
+      </button>
+      <div id="rentSubmenu" class="collapse sidebar-submenu">
+        <a class="nav-link sub-link" href="rent-properties.html"><i class="bi bi-buildings"></i><span>ملک‌های من</span></a>
+        <a class="nav-link sub-link" href="rent-property-form.html"><i class="bi bi-plus-square"></i><span>ثبت ملک</span></a>
+      </div>
+    </div>
+    <a class="nav-link" href="customers.html"><i class="bi bi-people"></i><span>مشتری‌ها</span></a>
+    <a class="nav-link" href="deals.html"><i class="bi bi-handshake"></i><span>معاملات</span></a>
+    <div class="nav-section mt-2">ادمین</div>
+    <a class="nav-link" href="admin-users.html"><i class="bi bi-person-check"></i><span>درخواست عضویت</span></a>
+    <a class="nav-link active" href="admin-access.html"><i class="bi bi-shield-lock"></i><span>نقش و دسترسی</span></a>
+    <a class="nav-link" href="account.html"><i class="bi bi-person-circle"></i><span>حساب کاربری</span></a>
+    <div class="nav-section mt-2">حساب</div>
+    <a class="nav-link logout" href="#"><i class="bi bi-box-arrow-right"></i><span>خروج از حساب</span></a>
+  </nav>
+</aside>
+<div id="sidebarOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-md-none" style="display:none;z-index:1010;"></div>
+
+<main class="panel-main">
+  <div class="page-heading">
+    <div>
+      <h1>نقش و محدوده قیمت کاربران</h1>
+      <p>نقش هر کارشناس و بازهٔ قیمتی که مجاز به دیدن فایل‌هاست را از اینجا تنظیم کنید. خالی بودن حداقل/حداکثر یعنی بدون محدودیت قیمت.</p>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-3">
+    <div class="col-6 col-md-3">
+      <div class="card-panel deal-stat-card">
+        <div class="deal-stat-label">کل کاربران</div>
+        <div class="deal-stat-value" id="statUsersTotal">۵</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card-panel deal-stat-card">
+        <div class="deal-stat-label">کارشناس (agent)</div>
+        <div class="deal-stat-value" id="statAgents">۳</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card-panel deal-stat-card">
+        <div class="deal-stat-label">مدیر / ادمین</div>
+        <div class="deal-stat-value" id="statAdmins">۲</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card-panel deal-stat-card">
+        <div class="deal-stat-label">با محدودیت قیمت</div>
+        <div class="deal-stat-value" id="statLimited">۲</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="card-panel pro-search-card mb-3">
+    <div class="pro-search-main">
+      <div class="pro-search-wrap">
+        <i class="bi bi-search"></i>
+        <input id="accessSearch" class="form-control pro-search-input" type="search" placeholder="نام، موبایل یا نام کاربری..." autocomplete="off">
+        <button type="button" class="btn btn-primary search-submit" id="accessSearchBtn"><i class="bi bi-search ms-1"></i> جستجو</button>
+      </div>
+      <div class="quick-filter-row">
+        <button type="button" class="search-chip active" data-access-role="all">همه نقش‌ها</button>
+        <button type="button" class="search-chip" data-access-role="agent">کارشناس</button>
+        <button type="button" class="search-chip" data-access-role="manager">مدیر</button>
+        <button type="button" class="search-chip" data-access-role="admin">ادمین</button>
+        <button type="button" class="search-chip" data-access-status="approved">تأییدشده</button>
+        <button type="button" class="search-chip" data-access-status="pending">در انتظار</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="card-panel table-panel">
+    <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div>
+        <div class="section-title">کاربران</div>
+        <div class="section-subtitle" id="accessResultsMeta">در حال نمایش همه کاربران</div>
+      </div>
+      <div class="text-muted small">مبالغ به <strong>میلیون تومان</strong> — برای بدون محدودیت فیلد را خالی بگذارید</div>
+    </div>
+    <div class="table-responsive">
+      <table class="table align-middle access-table">
+        <thead>
+          <tr>
+            <th>کاربر</th>
+            <th>موبایل</th>
+            <th>وضعیت</th>
+            <th style="min-width:140px">نقش</th>
+            <th style="min-width:120px">حداقل قیمت</th>
+            <th style="min-width:120px">حداکثر قیمت</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="accessTbody">
+          <tr class="access-row" data-name="نازنین یحیی پور" data-username="n.yahyapour" data-mobile="09171234567" data-role="agent" data-status="approved" data-price-min="" data-price-max="">
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <span class="user-avatar" style="width:34px;height:34px;font-size:13px">ن</span>
+                <div>
+                  <div class="fw-bold small">نازنین یحیی پور</div>
+                  <div class="text-muted" style="font-size:11px">n.yahyapour</div>
+                </div>
+              </div>
+            </td>
+            <td class="small">۰۹۱۷۱۲۳۴۵۶۷</td>
+            <td><span class="badge-soft badge-rent">تأیید شده</span></td>
+            <td>
+              <select class="form-select form-select-sm access-role">
+                <option value="agent" selected>کارشناس (agent)</option>
+                <option value="manager">مدیر (manager)</option>
+                <option value="admin">ادمین (admin)</option>
+              </select>
+            </td>
+            <td><input type="number" step="any" min="0" class="form-control form-control-sm access-price-min" placeholder="بدون حد" value=""></td>
+            <td><input type="number" step="any" min="0" class="form-control form-control-sm access-price-max" placeholder="بدون حد" value=""></td>
+            <td><button type="button" class="btn btn-sm btn-primary access-save"><i class="bi bi-check2 ms-1"></i> ذخیره</button></td>
+          </tr>
+          <tr class="access-row" data-name="آرمین حاجی پور" data-username="a.hajipour" data-mobile="09121234567" data-role="agent" data-status="approved" data-price-min="0" data-price-max="8000">
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <span class="user-avatar" style="width:34px;height:34px;font-size:13px;background:#ecfdf5;color:#059669">آ</span>
+                <div>
+                  <div class="fw-bold small">آرمین حاجی پور</div>
+                  <div class="text-muted" style="font-size:11px">a.hajipour</div>
+                </div>
+              </div>
+            </td>
+            <td class="small">۰۹۱۲۱۲۳۴۵۶۷</td>
+            <td><span class="badge-soft badge-rent">تأیید شده</span></td>
+            <td>
+              <select class="form-select form-select-sm access-role">
+                <option value="agent" selected>کارشناس (agent)</option>
+                <option value="manager">مدیر (manager)</option>
+                <option value="admin">ادمین (admin)</option>
+              </select>
+            </td>
+            <td><input type="number" step="any" min="0" class="form-control form-control-sm access-price-min" placeholder="بدون حد" value="0"></td>
+            <td><input type="number" step="any" min="0" class="form-control form-control-sm access-price-max" placeholder="بدون حد" value="8000"></td>
+            <td><button type="button" class="btn btn-sm btn-primary access-save"><i class="bi bi-check2 ms-1"></i> ذخیره</button></td>
+          </tr>
+          <tr class="access-row" data-name="مهدی ایرانمنش" data-username="m.iranmanesh" data-mobile="09351239876" data-role="agent" data-status="approved" data-price-min="2000" data-price-max="15000">
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <span class="user-avatar" style="width:34px;height:34px;font-size:13px;background:#eff6ff;color:#2563eb">م</span>
+                <div>
+                  <div class="fw-bold small">مهدی ایرانمنش</div>
+                  <div class="text-muted" style="font-size:11px">m.iranmanesh</div>
+                </div>
+              </div>
+            </td>
+            <td class="small">۰۹۳۵۱۲۳۹۸۷۶</td>
+            <td><span class="badge-soft badge-rent">تأیید شده</span></td>
+            <td>
+              <select class="form-select form-select-sm access-role">
+                <option value="agent" selected>کارشناس (agent)</option>
+                <option value="manager">مدیر (manager)</option>
+                <option value="admin">ادمین (admin)</option>
+              </select>
+            </td>
+            <td><input type="number" step="any" min="0" class="form-control form-control-sm access-price-min" placeholder="بدون حد" value="2000"></td>
+            <td><input type="number" step="any" min="0" class="form-control form-control-sm access-price-max" placeholder="بدون حد" value="15000"></td>
+            <td><button type="button" class="btn btn-sm btn-primary access-save"><i class="bi bi-check2 ms-1"></i> ذخیره</button></td>
+          </tr>
+          <tr class="access-row" data-name="سارا کریمی" data-username="s.karimi" data-mobile="09179876543" data-role="agent" data-status="pending" data-price-min="" data-price-max="">
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <span class="user-avatar" style="width:34px;height:34px;font-size:13px;background:#fff7ed;color:#c2410c">س</span>
+                <div>
+                  <div class="fw-bold small">سارا کریمی</div>
+                  <div class="text-muted" style="font-size:11px">s.karimi</div>
+                </div>
+              </div>
+            </td>
+            <td class="small">۰۹۱۷۹۸۷۶۵۴۳</td>
+            <td><span class="badge-soft badge-muted">در انتظار</span></td>
+            <td>
+              <select class="form-select form-select-sm access-role">
+                <option value="agent" selected>کارشناس (agent)</option>
+                <option value="manager">مدیر (manager)</option>
+                <option value="admin">ادمین (admin)</option>
+              </select>
+            </td>
+            <td><input type="number" step="any" min="0" class="form-control form-control-sm access-price-min" placeholder="بدون حد" value=""></td>
+            <td><input type="number" step="any" min="0" class="form-control form-control-sm access-price-max" placeholder="بدون حد" value=""></td>
+            <td><button type="button" class="btn btn-sm btn-primary access-save"><i class="bi bi-check2 ms-1"></i> ذخیره</button></td>
+          </tr>
+          <tr class="access-row" data-name="مدیر سیستم" data-username="admin" data-mobile="09120000000" data-role="admin" data-status="approved" data-price-min="" data-price-max="">
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <span class="user-avatar" style="width:34px;height:34px;font-size:13px;background:#fef2f2;color:#dc2626">ا</span>
+                <div>
+                  <div class="fw-bold small">مدیر سیستم</div>
+                  <div class="text-muted" style="font-size:11px">admin</div>
+                </div>
+              </div>
+            </td>
+            <td class="small">۰۹۱۲۰۰۰۰۰۰۰</td>
+            <td><span class="badge-soft badge-rent">تأیید شده</span></td>
+            <td>
+              <select class="form-select form-select-sm access-role">
+                <option value="agent">کارشناس (agent)</option>
+                <option value="manager">مدیر (manager)</option>
+                <option value="admin" selected>ادمین (admin)</option>
+              </select>
+            </td>
+            <td><input type="number" step="any" min="0" class="form-control form-control-sm access-price-min" placeholder="بدون حد" value=""></td>
+            <td><input type="number" step="any" min="0" class="form-control form-control-sm access-price-max" placeholder="بدون حد" value=""></td>
+            <td><button type="button" class="btn btn-sm btn-primary access-save"><i class="bi bi-check2 ms-1"></i> ذخیره</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="accessEmpty" class="notification-empty d-none p-4">
+      <i class="bi bi-search fs-3 d-block mb-2"></i>
+      کاربری با این معیارها پیدا نشد.
+    </div>
+  </div>
+
+  <div class="card-panel mt-3">
+    <div class="card-body small text-muted">
+      <strong class="text-body">راهنما:</strong>
+      نقش‌ها مطابق migration: <code>agent</code> کارشناس، <code>manager</code> مدیر شعبه، <code>admin</code> مدیر سیستم.
+      فیلدهای <code>price_min</code> و <code>price_max</code> محدودهٔ قیمت فایل‌هایی است که کاربر می‌تواند ببیند؛ خالی = بدون محدودیت.
+      در نسخهٔ فرانت ذخیره فقط به‌صورت نمایشی است و برای API لاراول آماده شده است.
+    </div>
+  </div>
+</main>
+</div>
+
+<!-- toast ساده -->
+<div id="accessToast" class="access-toast d-none" role="status"></div>
+
+<script src="assets/js/bootstrap.bundle.js"></script>
+<script src="assets/js/panel.js"></script>
+<script src="assets/js/admin-access.js"></script>
+</body>
+</html>
